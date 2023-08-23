@@ -27,7 +27,5 @@ public class RezervacijaDaoSQLImplementation extends AbstractDao<Rezervacija> im
         } catch (SQLException e) {
             throw new DolinaSreceException(e.getMessage(), e);
         }
-
-        return null;
     }
 }
