@@ -23,13 +23,16 @@ public abstract class AbstractDao<T> implements Dao<T> {
                     public void run() {
                         try {
                             connection.close();
-                        }
-                        catch (SQLException e) {
+                        } catch (SQLException e) {
                             e.printStackTrace();
                         }
                     }
                 });
             }
         }
+    }
+
+    private static Connection getConnection() {
+        return AbstractDao.connection;
     }
 }
