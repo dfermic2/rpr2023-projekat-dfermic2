@@ -72,7 +72,7 @@ public class Korisnik {
 
     @Override
     public String toString() {
-        return "Korisnik {" +
+        return "Korisnik {id = " + id +
                 ", ime = '" + ime + '\'' +
                 ", prezime = '" + prezime + '\'' +
                 ", email = '" + email + '\'' +
