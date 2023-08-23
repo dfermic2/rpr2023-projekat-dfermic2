@@ -9,8 +9,8 @@ import java.sql.SQLException;
 import java.util.Date;
 
 public class RezervacijaDaoSQLImplementation extends AbstractDao<Rezervacija> implements RezervacijaDao {
-    public RezervacijaDaoSQLImplementation(String tableName) {
-        super(tableName);
+    public RezervacijaDaoSQLImplementation() {
+        super("rezervacije");
     }
 
     @Override
