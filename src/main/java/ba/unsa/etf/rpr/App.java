@@ -26,14 +26,14 @@ public class App {
 //
 //    }
         RezervacijaDao rezervacijaDao = new RezervacijaDaoSQLImplementation();
-        Connection connection = KorisnikDaoSQLImplementation.getConnection();
+        Connection connection = RezervacijaDaoSQLImplementation.getConnection();
 
         if (connection != null) System.out.println("Connection created");
         else System.out.println("Failed to connect to DB");
 
         try {
-            System.out.println(korisnikDao.getById(1));
-            System.out.println(korisnikDao.getAll());
+            System.out.println(rezervacijaDao.getById(1));
+//            System.out.println(korisnikDao.getAll());
         } catch (DolinaSreceException e) {
             System.out.println(e.getMessage());
         }
