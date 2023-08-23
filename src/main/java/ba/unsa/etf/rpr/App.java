@@ -32,8 +32,8 @@ public class App {
         else System.out.println("Failed to connect to DB");
 
         try {
-            System.out.println(rezervacijaDao.getById(1));
-//            System.out.println(korisnikDao.getAll());
+//            System.out.println(rezervacijaDao.getById(1));
+            System.out.println(rezervacijaDao.getAll());
         } catch (DolinaSreceException e) {
             System.out.println(e.getMessage());
         }
