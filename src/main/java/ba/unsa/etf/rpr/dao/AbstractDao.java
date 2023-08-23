@@ -2,9 +2,7 @@ package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Properties;
 
 public abstract class AbstractDao<T> implements Dao<T> {
@@ -45,4 +43,22 @@ public abstract class AbstractDao<T> implements Dao<T> {
     public static Connection getConnection() {
         return AbstractDao.connection;
     }
+
+    public T getById(int id) throws DolinaSreceException {
+        String sql = "SELECT * FROM" + tableName + "WHERE  id = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) return row2object(resultSet);
+            else return null;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage(), e);
+        }
+    }
+
+    public abstract T row2object(ResultSet rs) throws DolinaSreceException;
 }
