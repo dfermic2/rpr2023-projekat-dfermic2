@@ -8,11 +8,11 @@ import java.sql.Connection;
 public class App {
     public static void main(String[] args) {
 
-        KorisnikDao korisnikDao = new KorisnikDaoSQLImplementation();
-        Connection connection = KorisnikDaoSQLImplementation.getConnection();
-
-        if (connection != null) System.out.println("Connection created");
-        else System.out.println("Failed to connect to DB");
+//        KorisnikDao korisnikDao = new KorisnikDaoSQLImplementation();
+//        Connection connection = KorisnikDaoSQLImplementation.getConnection();
+//
+//        if (connection != null) System.out.println("Connection created");
+//        else System.out.println("Failed to connect to DB");
 
     }
 }

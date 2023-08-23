@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr.dao;
 
+import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -7,8 +9,10 @@ import java.util.Properties;
 
 public abstract class AbstractDao<T> implements Dao<T> {
     private static Connection connection = null;
+    private String tableName;
 
-    public AbstractDao() {
+    public AbstractDao(String tableName) {
+        this.tableName = tableName;
         createConnection();
     }
 
