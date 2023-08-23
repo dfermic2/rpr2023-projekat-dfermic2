@@ -38,7 +38,7 @@ public abstract class AbstractDao<T> implements Dao<T> {
         }
     }
 
-    private static Connection getConnection() {
+    public static Connection getConnection() {
         return AbstractDao.connection;
     }
 }

@@ -1,13 +1,18 @@
 package ba.unsa.etf.rpr;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+import ba.unsa.etf.rpr.dao.KorisnikDao;
+import ba.unsa.etf.rpr.dao.KorisnikDaoSQLImplementation;
+
+import java.sql.Connection;
+
+public class App {
+    public static void main(String[] args) {
+
+        KorisnikDao korisnikDao = new KorisnikDaoSQLImplementation();
+        Connection connection = KorisnikDaoSQLImplementation.getConnection();
+
+        if (connection != null) System.out.println("Connection created");
+        else System.out.println("Failed to connect to DB");
+
     }
 }
