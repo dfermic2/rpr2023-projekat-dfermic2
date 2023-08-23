@@ -3,6 +3,7 @@ package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 
 import java.sql.*;
+import java.util.List;
 import java.util.Properties;
 
 public abstract class AbstractDao<T> implements Dao<T> {
