@@ -3,6 +3,7 @@ package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -58,6 +59,24 @@ public abstract class AbstractDao<T> implements Dao<T> {
 
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage(), e);
+        }
+    }
+
+    public List<T> getAll() throws DolinaSreceException {
+        String sql = "SELECT * FROM " + tableName;
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            ArrayList<T> results = new ArrayList<>();
+
+            while (resultSet.next()) {
+                results.add(row2object(resultSet));
+            }
+
+            return results;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 

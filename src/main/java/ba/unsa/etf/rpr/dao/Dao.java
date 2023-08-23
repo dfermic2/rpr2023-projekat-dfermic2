@@ -7,5 +7,5 @@ import java.util.List;
 public interface Dao<T> {
     T getById(int id) throws DolinaSreceException;
 
-//    List<T> getAll() throws DolinaSreceException;
+    List<T> getAll() throws DolinaSreceException;
 }
