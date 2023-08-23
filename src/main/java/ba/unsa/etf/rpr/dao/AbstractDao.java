@@ -9,7 +9,7 @@ import java.util.Properties;
 
 public abstract class AbstractDao<T> implements Dao<T> {
     private static Connection connection = null;
-    private String tableName;
+    private final String tableName;
 
     public AbstractDao(String tableName) {
         this.tableName = tableName;
@@ -58,7 +58,7 @@ public abstract class AbstractDao<T> implements Dao<T> {
             else return null;
 
         } catch (SQLException e) {
-            throw new RuntimeException(e.getMessage(), e);
+            throw new DolinaSreceException(e.getMessage(), e);
         }
     }
 
@@ -76,7 +76,7 @@ public abstract class AbstractDao<T> implements Dao<T> {
 
             return results;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DolinaSreceException(e.getMessage(), e);
         }
     }
 
