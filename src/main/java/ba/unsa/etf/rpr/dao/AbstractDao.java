@@ -46,7 +46,7 @@ public abstract class AbstractDao<T> implements Dao<T> {
     }
 
     public T getById(int id) throws DolinaSreceException {
-        String sql = "SELECT * FROM" + tableName + "WHERE  id = ?";
+        String sql = "SELECT * FROM " + tableName + " WHERE  id = ?";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
