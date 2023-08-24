@@ -3,6 +3,8 @@ package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.domain.Korisnik;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
@@ -11,6 +13,21 @@ import java.util.TreeMap;
 public class KorisnikDaoSQLImplementation extends AbstractDao<Korisnik> implements KorisnikDao {
     public KorisnikDaoSQLImplementation() {
         super("korisnici");
+    }
+
+    @Override
+    public Korisnik getByEmail(String email) throws DolinaSreceException {
+        String sql = "SELECT * FROM korisnici WHERE email = " + email;
+        try {
+            Connection connection = KorisnikDaoSQLImplementation.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) return row2object(resultSet);
+            else return null;
+        } catch (Exception e) {
+            throw new DolinaSreceException(e.getMessage(), e);
+        }
     }
 
     @Override
