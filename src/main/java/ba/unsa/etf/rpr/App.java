@@ -42,5 +42,5 @@ public class App {
 //
 //        System.out.println("Binary: " +kucicaDao.getById(1).getSlika().getBinaryStream());
 
-//    }
+    }
 }
