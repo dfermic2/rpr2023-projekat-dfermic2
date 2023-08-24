@@ -65,7 +65,7 @@ public abstract class AbstractDao<T> implements Dao<T> {
         String sql = "SELECT * FROM " + tableName;
 
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet resultSet = preparedStatement.executeQuery();
             ArrayList<T> results = new ArrayList<>();
 
@@ -81,10 +81,8 @@ public abstract class AbstractDao<T> implements Dao<T> {
 
     @Override
     public T add(T item) throws DolinaSreceException {
-        //INSERT INTO tableName (columnNames) VALUES (values)
-        //Need to skip id and put the generated one from db to object I'm returning
         Map<String, Object> row = object2row(item);
-        String sql = "INSERT INTO " + tableName + prepareColumnNames(row) + " VALUES" + prepareValues(row);
+        String sql = "INSERT INTO " + tableName + prepareColumnNames(row) + " VALUES " + prepareValues(row);
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -106,6 +104,7 @@ public abstract class AbstractDao<T> implements Dao<T> {
     }
 
     private static String prepareValues(Map<String, Object> row) {
-        return null;
+        String values = row.entrySet().stream().filter(o -> !Objects.equals(o.getKey(), "id")).map(o -> o.getValue().toString()).collect(Collectors.joining(","));
+        return "(" + values + ")";
     }
 }

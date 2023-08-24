@@ -1,15 +1,14 @@
 package ba.unsa.etf.rpr;
 
-import ba.unsa.etf.rpr.dao.KorisnikDao;
-import ba.unsa.etf.rpr.dao.KorisnikDaoSQLImplementation;
-import ba.unsa.etf.rpr.dao.RezervacijaDao;
-import ba.unsa.etf.rpr.dao.RezervacijaDaoSQLImplementation;
+import ba.unsa.etf.rpr.dao.*;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 
+import java.io.File;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DolinaSreceException, SQLException {
 
 //        KorisnikDao korisnikDao = new KorisnikDaoSQLImplementation();
 //        Connection connection = KorisnikDaoSQLImplementation.getConnection();
@@ -37,6 +36,11 @@ public class App {
 //        } catch (DolinaSreceException e) {
 //            System.out.println(e.getMessage());
 //        }
+
+        KucicaDao kucicaDao = new KucicaDaoSQLImplementation();
+        Connection connection = KucicaDaoSQLImplementation.getConnection();
+
+        System.out.println("Binary: " +kucicaDao.getById(1).getSlika().getBinaryStream());
 
     }
 }

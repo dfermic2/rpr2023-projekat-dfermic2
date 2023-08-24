@@ -31,7 +31,6 @@ public class KucicaDaoSQLImplementation extends AbstractDao<Kucica> implements K
         }
     }
 
-    // WHAT ABOUT THE BLOB?
     @Override
     public Map<String, Object> object2row(Kucica object) {
         Map<String, Object> row = new TreeMap<>();
