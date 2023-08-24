@@ -3,9 +3,7 @@ package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 public abstract class AbstractDao<T> implements Dao<T> {
     private static Connection connection = null;
@@ -86,4 +84,8 @@ public abstract class AbstractDao<T> implements Dao<T> {
     }
 
     public abstract T row2object(ResultSet rs) throws DolinaSreceException;
+    public abstract Map<String, Object> object2row(T object);
+
+    // implement object to row which will make a map with column names and values
+    // grab the columns into a string and use to insert values into db
 }
