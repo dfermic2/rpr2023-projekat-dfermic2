@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RezervacijaDaoSQLImplementation extends AbstractDao<Rezervacija> implements RezervacijaDao {
     public RezervacijaDaoSQLImplementation() {
@@ -27,5 +29,18 @@ public class RezervacijaDaoSQLImplementation extends AbstractDao<Rezervacija> im
         } catch (SQLException e) {
             throw new DolinaSreceException(e.getMessage(), e);
         }
+    }
+
+    @Override
+    public Map<String, Object> object2row(Rezervacija object) {
+        Map<String, Object> row = new HashMap<>();
+        // WHY HASHMAP?
+        row.put("id", object.getId());
+        row.put("id_korisnik", object.getIdKorisnik());
+        row.put("id_kucica", object.getIdKucica());
+        row.put("pocetak", object.getPocetak());
+        row.put("kraj", object.getKraj());
+        row.put("cijana", object.getCijena());
+        return row;
     }
 }
