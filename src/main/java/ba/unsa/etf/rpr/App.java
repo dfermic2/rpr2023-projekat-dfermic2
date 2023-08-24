@@ -10,20 +10,20 @@ import java.sql.SQLException;
 public class App {
     public static void main(String[] args) throws DolinaSreceException, SQLException {
 
-//        KorisnikDao korisnikDao = new KorisnikDaoSQLImplementation();
-//        Connection connection = KorisnikDaoSQLImplementation.getConnection();
-//
-//        if (connection != null) System.out.println("Connection created");
-//        else System.out.println("Failed to connect to DB");
-//
-//        try {
-//            System.out.println(korisnikDao.getById(1));
+        KorisnikDao korisnikDao = new KorisnikDaoSQLImplementation();
+        Connection connection = KorisnikDaoSQLImplementation.getConnection();
+
+        if (connection != null) System.out.println("Connection created");
+        else System.out.println("Failed to connect to DB");
+
+        try {
+            System.out.println(korisnikDao.getByEmail("'YKWDuuude@yahoo.com'"));
 //            System.out.println(korisnikDao.getAll());
-//        } catch (DolinaSreceException e) {
-//            System.out.println(e.getMessage());
-//        }
-//
-//    }
+        } catch (DolinaSreceException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
 //        RezervacijaDao rezervacijaDao = new RezervacijaDaoSQLImplementation();
 //        Connection connection = RezervacijaDaoSQLImplementation.getConnection();
 //
@@ -37,10 +37,10 @@ public class App {
 //            System.out.println(e.getMessage());
 //        }
 
-        KucicaDao kucicaDao = new KucicaDaoSQLImplementation();
-        Connection connection = KucicaDaoSQLImplementation.getConnection();
+//        KucicaDao kucicaDao = new KucicaDaoSQLImplementation();
+//        Connection connection = KucicaDaoSQLImplementation.getConnection();
+//
+//        System.out.println("Binary: " +kucicaDao.getById(1).getSlika().getBinaryStream());
 
-        System.out.println("Binary: " +kucicaDao.getById(1).getSlika().getBinaryStream());
-
-    }
+//    }
 }
