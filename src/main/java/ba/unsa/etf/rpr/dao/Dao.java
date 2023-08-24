@@ -9,5 +9,5 @@ public interface Dao<T> {
 
     List<T> getAll() throws DolinaSreceException;
 
-//    T add(T item) throws DolinaSreceException;
+    T add(T item) throws DolinaSreceException;
 }

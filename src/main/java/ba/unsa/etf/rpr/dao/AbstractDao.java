@@ -80,5 +80,10 @@ public abstract class AbstractDao<T> implements Dao<T> {
         }
     }
 
+    @Override
+    public T add(T item) throws DolinaSreceException {
+        return null;
+    }
+
     public abstract T row2object(ResultSet rs) throws DolinaSreceException;
 }
