@@ -10,20 +10,20 @@ import java.sql.SQLException;
 public class App {
     public static void main(String[] args) throws DolinaSreceException, SQLException {
 
-        KorisnikDao korisnikDao = new KorisnikDaoSQLImplementation();
-        Connection connection = KorisnikDaoSQLImplementation.getConnection();
-
-        if (connection != null) System.out.println("Connection created");
-        else System.out.println("Failed to connect to DB");
-
-        try {
-            System.out.println(korisnikDao.getByEmail("'YKWDuuude@yahoo.com'"));
+//        KorisnikDao korisnikDao = new KorisnikDaoSQLImplementation();
+//        Connection connection = KorisnikDaoSQLImplementation.getConnection();
+//
+//        if (connection != null) System.out.println("Connection created");
+//        else System.out.println("Failed to connect to DB");
+//
+//        try {
+//            System.out.println(korisnikDao.getByEmail("'YKWDuuude@yahoo.com'"));
 //            System.out.println(korisnikDao.getAll());
-        } catch (DolinaSreceException e) {
-            System.out.println(e.getMessage());
-        }
-
-    }
+//        } catch (DolinaSreceException e) {
+//            System.out.println(e.getMessage());
+//        }
+//
+//    }
 //        RezervacijaDao rezervacijaDao = new RezervacijaDaoSQLImplementation();
 //        Connection connection = RezervacijaDaoSQLImplementation.getConnection();
 //
