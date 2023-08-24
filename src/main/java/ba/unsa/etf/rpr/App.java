@@ -25,18 +25,18 @@ public class App {
 //        }
 //
 //    }
-        RezervacijaDao rezervacijaDao = new RezervacijaDaoSQLImplementation();
-        Connection connection = RezervacijaDaoSQLImplementation.getConnection();
-
-        if (connection != null) System.out.println("Connection created");
-        else System.out.println("Failed to connect to DB");
-
-        try {
+//        RezervacijaDao rezervacijaDao = new RezervacijaDaoSQLImplementation();
+//        Connection connection = RezervacijaDaoSQLImplementation.getConnection();
+//
+//        if (connection != null) System.out.println("Connection created");
+//        else System.out.println("Failed to connect to DB");
+//
+//        try {
 //            System.out.println(rezervacijaDao.getById(1));
-            System.out.println(rezervacijaDao.getAll());
-        } catch (DolinaSreceException e) {
-            System.out.println(e.getMessage());
-        }
+//            System.out.println(rezervacijaDao.getAll());
+//        } catch (DolinaSreceException e) {
+//            System.out.println(e.getMessage());
+//        }
 
     }
 }

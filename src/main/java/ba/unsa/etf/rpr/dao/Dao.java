@@ -8,4 +8,6 @@ public interface Dao<T> {
     T getById(int id) throws DolinaSreceException;
 
     List<T> getAll() throws DolinaSreceException;
+
+//    T add(T item) throws DolinaSreceException;
 }
