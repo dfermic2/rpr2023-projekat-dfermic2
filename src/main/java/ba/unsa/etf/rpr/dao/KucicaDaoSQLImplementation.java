@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class KucicaDaoSQLImplementation extends AbstractDao<Kucica> implements KucicaDao {
 
@@ -27,5 +29,16 @@ public class KucicaDaoSQLImplementation extends AbstractDao<Kucica> implements K
         } catch (SQLException e) {
             throw new DolinaSreceException(e.getMessage(), e);
         }
+    }
+
+    @Override
+    public Map<String, Object> object2row(Kucica object) {
+        Map<String, Object> row = new HashMap<>();
+        row.put("id", object.getId());
+        row.put("ime", object.getIme());
+        row.put("cijena", object.getCijena());
+        row.put("jacuzzi", object.isJacuzzi());
+        row.put("slika", object.getSlika());
+        return row;
     }
 }
