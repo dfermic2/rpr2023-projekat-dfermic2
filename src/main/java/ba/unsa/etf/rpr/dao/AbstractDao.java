@@ -4,6 +4,7 @@ import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 
 import java.sql.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public abstract class AbstractDao<T> implements Dao<T> {
     private static Connection connection = null;
@@ -81,16 +82,30 @@ public abstract class AbstractDao<T> implements Dao<T> {
     @Override
     public T add(T item) throws DolinaSreceException {
         //INSERT INTO tableName (columnNames) VALUES (values)
-        String sql = "INSERT INTO " + tableName +
+        //Need to skip id and put the generated one from db to object I'm returning
+        Map<String, Object> row = object2row(item);
+        String sql = "INSERT INTO " + tableName + prepareColumnNames(row) + " VALUES" + prepareValues(row);
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+        } catch (SQLException e) {
+            throw new DolinaSreceException(e.getMessage(), e);
+        }
         return null;
     }
 
     public abstract T row2object(ResultSet rs) throws DolinaSreceException;
+
     public abstract Map<String, Object> object2row(T object);
 
-    private static String prepareColumnNames(Map <String, Object> row) {
-
+    private static String prepareColumnNames(Map<String, Object> row) {
+        String columnNames = row.keySet().stream().filter(o -> !Objects.equals(o, "id")).collect(Collectors.joining(","));
+        return "(" + columnNames + ")";
     }
 
-    // grab the columns into a string and use to insert values into db
+    private static String prepareValues(Map<String, Object> row) {
+        return null;
+    }
 }
