@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class RezervacijaDaoSQLImplementation extends AbstractDao<Rezervacija> implements RezervacijaDao {
     public RezervacijaDaoSQLImplementation() {
@@ -33,8 +34,7 @@ public class RezervacijaDaoSQLImplementation extends AbstractDao<Rezervacija> im
 
     @Override
     public Map<String, Object> object2row(Rezervacija object) {
-        Map<String, Object> row = new HashMap<>();
-        // WHY HASHMAP?
+        Map<String, Object> row = new TreeMap<>();
         row.put("id", object.getId());
         row.put("id_korisnik", object.getIdKorisnik());
         row.put("id_kucica", object.getIdKucica());

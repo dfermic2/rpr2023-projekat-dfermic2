@@ -80,12 +80,17 @@ public abstract class AbstractDao<T> implements Dao<T> {
 
     @Override
     public T add(T item) throws DolinaSreceException {
+        //INSERT INTO tableName (columnNames) VALUES (values)
+        String sql = "INSERT INTO " + tableName +
         return null;
     }
 
     public abstract T row2object(ResultSet rs) throws DolinaSreceException;
     public abstract Map<String, Object> object2row(T object);
 
-    // implement object to row which will make a map with column names and values
+    private static String prepareColumnNames(Map <String, Object> row) {
+
+    }
+
     // grab the columns into a string and use to insert values into db
 }

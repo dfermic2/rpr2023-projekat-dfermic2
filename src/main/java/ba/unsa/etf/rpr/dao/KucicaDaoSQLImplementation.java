@@ -7,8 +7,8 @@ import java.math.BigDecimal;
 import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class KucicaDaoSQLImplementation extends AbstractDao<Kucica> implements KucicaDao {
 
@@ -34,7 +34,7 @@ public class KucicaDaoSQLImplementation extends AbstractDao<Kucica> implements K
     // WHAT ABOUT THE BLOB?
     @Override
     public Map<String, Object> object2row(Kucica object) {
-        Map<String, Object> row = new HashMap<>();
+        Map<String, Object> row = new TreeMap<>();
         row.put("id", object.getId());
         row.put("ime", object.getIme());
         row.put("cijena", object.getCijena());

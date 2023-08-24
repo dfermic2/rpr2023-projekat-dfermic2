@@ -5,8 +5,8 @@ import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class KorisnikDaoSQLImplementation extends AbstractDao<Korisnik> implements KorisnikDao {
     public KorisnikDaoSQLImplementation() {
@@ -31,7 +31,7 @@ public class KorisnikDaoSQLImplementation extends AbstractDao<Korisnik> implemen
 
     @Override
     public Map<String, Object> object2row(Korisnik object) {
-        Map<String, Object> row = new HashMap<>();
+        Map<String, Object> row = new TreeMap<>();
         row.put("id", object.getId());
         row.put("ime", object.getIme());
         row.put("prezime", object.getPrezime());
