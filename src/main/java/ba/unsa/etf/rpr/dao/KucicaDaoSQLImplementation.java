@@ -41,4 +41,10 @@ public class KucicaDaoSQLImplementation extends AbstractDao<Kucica> implements K
         row.put("slika", object.getSlika());
         return row;
     }
+
+    @Override
+    public Kucica prepareItem(Kucica item, int id) {
+        item.setId(id);
+        return item;
+    }
 }

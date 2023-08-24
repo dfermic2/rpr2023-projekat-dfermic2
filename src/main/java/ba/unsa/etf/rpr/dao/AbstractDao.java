@@ -86,17 +86,21 @@ public abstract class AbstractDao<T> implements Dao<T> {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            preparedStatement.executeUpdate();
+
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            resultSet.next();
+            return prepareItem(item, resultSet.getInt(1));
 
         } catch (SQLException e) {
             throw new DolinaSreceException(e.getMessage(), e);
         }
-        return null;
     }
 
     public abstract T row2object(ResultSet rs) throws DolinaSreceException;
 
     public abstract Map<String, Object> object2row(T object);
+    public abstract T prepareItem(T item, int id);
 
     private static String prepareColumnNames(Map<String, Object> row) {
         String columnNames = row.keySet().stream().filter(o -> !Objects.equals(o, "id")).collect(Collectors.joining(","));

@@ -40,4 +40,10 @@ public class KorisnikDaoSQLImplementation extends AbstractDao<Korisnik> implemen
         row.put("password", object.getPassword());
         return row;
     }
+
+    @Override
+    public Korisnik prepareItem(Korisnik item, int id) {
+        item.setId(id);
+        return item;
+    }
 }
