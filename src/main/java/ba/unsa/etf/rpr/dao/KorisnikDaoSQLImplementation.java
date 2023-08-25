@@ -30,7 +30,7 @@ public class KorisnikDaoSQLImplementation extends AbstractDao<Korisnik> implemen
 
     @Override
     public Korisnik getByEmail(String email) throws DolinaSreceException {
-        String sql = "SELECT * FROM korisnici WHERE email = " + email;
+        String sql = "SELECT * FROM korisnici WHERE email = '" + email + "'";
         try {
             Connection connection = KorisnikDaoSQLImplementation.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
