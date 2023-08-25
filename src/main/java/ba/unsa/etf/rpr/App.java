@@ -11,19 +11,19 @@ import java.sql.SQLException;
 public class App {
     public static void main(String[] args) {
 
-        KorisnikDao korisnikDao = new KorisnikDaoSQLImplementation();
-        Connection connection = KorisnikDaoSQLImplementation.getConnection();
-
-        if (connection != null) System.out.println("Connection created");
-        else System.out.println("Failed to connect to DB");
-
-        try {
+//        KorisnikDao korisnikDao = new KorisnikDaoSQLImplementation();
+//        Connection connection = KorisnikDaoSQLImplementation.getConnection();
+//
+//        if (connection != null) System.out.println("Connection created");
+//        else System.out.println("Failed to connect to DB");
+//
+//        try {
 //            System.out.println(korisnikDao.getByEmail("'YKWDuuude@yahoo.com'"));
 //            System.out.println(korisnikDao.getAll());
-            System.out.println(korisnikDao.add(new Korisnik(21, "Dan", "Soder", "notSpecial@hbo.com", "Brooklyn 9213 NYC", "ricFlair")));
-        } catch (DolinaSreceException e) {
-            System.out.println(e.getMessage());
-        }
+//            System.out.println(korisnikDao.add(new Korisnik(21, "Dan", "Soder", "notSpecial@hbo.com", "Brooklyn 9213 NYC", "ricFlair")));
+//        } catch (DolinaSreceException e) {
+//            System.out.println(e.getMessage());
+//        }
 //
 //    }
 //        RezervacijaDao rezervacijaDao = new RezervacijaDaoSQLImplementation();

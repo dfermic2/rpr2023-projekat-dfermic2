@@ -84,8 +84,6 @@ public abstract class AbstractDao<T> implements Dao<T> {
         Map<String, Object> row = object2row(item);
         String sql = "INSERT INTO " + tableName + prepareColumnNames(row) + " VALUES " + prepareValues(row);
 
-        System.out.println(sql);
-
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.executeUpdate();
@@ -110,7 +108,6 @@ public abstract class AbstractDao<T> implements Dao<T> {
     }
 
     private static String prepareValues(Map<String, Object> row) {
-//        String values = row.entrySet().stream().filter(o -> !Objects.equals(o.getKey(), "id")).map(o -> o.getValue().toString()).collect(Collectors.joining(","));
         String values = row.entrySet().stream().filter(o -> !Objects.equals(o.getKey(), "id")).map(o -> addQuotes(o.getValue())).collect(Collectors.joining(","));
         return "(" + values + ")";
     }
