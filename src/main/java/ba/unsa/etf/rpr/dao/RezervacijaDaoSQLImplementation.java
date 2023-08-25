@@ -11,8 +11,21 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class RezervacijaDaoSQLImplementation extends AbstractDao<Rezervacija> implements RezervacijaDao {
+    public static RezervacijaDaoSQLImplementation instance = null;
+
     public RezervacijaDaoSQLImplementation() {
         super("rezervacije");
+    }
+
+    public static RezervacijaDaoSQLImplementation getInstance() {
+        if (instance == null)
+            instance = new RezervacijaDaoSQLImplementation();
+        return instance;
+    }
+
+    public static void removeInstance() {
+        if (instance != null)
+            instance = null;
     }
 
     @Override
