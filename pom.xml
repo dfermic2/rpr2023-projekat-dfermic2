@@ -31,6 +31,17 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.30</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-controls</artifactId>
+      <version>19-ea+7</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-fxml</artifactId>
+      <version>19-ea+7</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -78,6 +89,20 @@
       </plugins>
     </pluginManagement>
       <plugins>
+        <plugin>
+          <groupId>org.openjfx</groupId>
+          <artifactId>javafx-maven-plugin</artifactId>
+          <version>0.0.8</version>
+          <executions>
+            <execution>
+              <!-- Default configuration for running with: mvn clean javafx:run -->
+              <id>default-cli</id>
+              <configuration>
+                <mainClass>ba.unsa.etf.rpr.AppFX</mainClass>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
           <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-compiler-plugin</artifactId>

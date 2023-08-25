@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class App {
-    public static void main(String[] args) throws DolinaSreceException, SQLException {
+    public static void main(String[] args) {
 
 //        KorisnikDao korisnikDao = new KorisnikDaoSQLImplementation();
 //        Connection connection = KorisnikDaoSQLImplementation.getConnection();
