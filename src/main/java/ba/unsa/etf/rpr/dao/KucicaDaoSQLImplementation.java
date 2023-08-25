@@ -11,9 +11,21 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class KucicaDaoSQLImplementation extends AbstractDao<Kucica> implements KucicaDao {
+    public static KucicaDaoSQLImplementation instance = null;
 
     public KucicaDaoSQLImplementation() {
         super("kucice");
+    }
+
+    public static KucicaDaoSQLImplementation getInstance() {
+        if (instance == null)
+            instance = new KucicaDaoSQLImplementation();
+        return instance;
+    }
+
+    public static void removeInstance() {
+        if (instance != null)
+            instance = null;
     }
 
     @Override
