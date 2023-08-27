@@ -21,7 +21,6 @@ public class KuciceController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         try {
             List<Kucica> kucicaList = KucicaManager.getAll();
 

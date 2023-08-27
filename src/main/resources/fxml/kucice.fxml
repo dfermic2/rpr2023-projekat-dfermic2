@@ -11,7 +11,7 @@
       <HBox prefHeight="83.0" prefWidth="1000.0" />
       <ScrollPane>
          <content>
-            <TilePane fx:id="kuciceLayout" prefHeight="723.0" prefWidth="1000.0" />
+            <TilePane fx:id="kuciceLayout" alignment="CENTER" hgap="15.0" prefHeight="723.0" prefWidth="1000.0" vgap="15.0" />
          </content>
       </ScrollPane>
    </children>
