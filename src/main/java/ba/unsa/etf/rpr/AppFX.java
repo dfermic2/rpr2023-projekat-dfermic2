@@ -17,6 +17,7 @@ public class AppFX extends Application {
         stage.setTitle("Dolina sreće");
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         stage.setResizable(false);
+        stage.setFullScreen(true);
         stage.show();
     }
 

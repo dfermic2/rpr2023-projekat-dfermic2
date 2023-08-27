@@ -34,6 +34,7 @@ public class LoginController {
                 Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucice.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
+                stage.setFullScreen(true);
                 stage.setScene(scene);
                 stage.show();
 //            }
