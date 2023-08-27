@@ -25,6 +25,7 @@ public class KuciceController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucica.fxml"));
         System.out.println("LOADED");
         try {
+
             VBox vBox = fxmlLoader.load();
             System.out.println("DAIJSDOIJSA");
             KucicaController kucicaController = fxmlLoader.getController();
