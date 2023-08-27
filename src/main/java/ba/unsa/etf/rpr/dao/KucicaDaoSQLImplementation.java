@@ -2,15 +2,29 @@ package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Kucica;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigDecimal;
+import java.net.URL;
 import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
+import java.util.ResourceBundle;
 import java.util.TreeMap;
 
-public class KucicaDaoSQLImplementation extends AbstractDao<Kucica> implements KucicaDao {
+public class KucicaDaoSQLImplementation extends AbstractDao<Kucica> implements KucicaDao, Initializable {
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println("INITIALIZED");
+    }
     public static KucicaDaoSQLImplementation instance = null;
 
     public KucicaDaoSQLImplementation() {
@@ -35,11 +49,13 @@ public class KucicaDaoSQLImplementation extends AbstractDao<Kucica> implements K
             String ime = rs.getString("ime");
             BigDecimal cijena = rs.getBigDecimal("cijena");
             boolean jacuzzi = rs.getBoolean("jacuzzi");
-            Blob slika = rs.getBlob("slika");
+            byte[] slika = rs.getBlob("slika").getBinaryStream().readAllBytes();
 
             return new Kucica(id, ime, cijena, jacuzzi, slika);
         } catch (SQLException e) {
             throw new DolinaSreceException(e.getMessage(), e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -59,4 +75,6 @@ public class KucicaDaoSQLImplementation extends AbstractDao<Kucica> implements K
         item.setId(id);
         return item;
     }
+
+
 }

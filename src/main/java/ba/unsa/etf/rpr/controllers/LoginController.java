@@ -23,20 +23,20 @@ public class LoginController {
 
     public void onLogin(javafx.event.ActionEvent actionEvent) throws DolinaSreceException, IOException {
 
-        if (email.getText().isEmpty()) loginMessage.setText("Unesite email!");
-        else if (password.getText().isEmpty()) loginMessage.setText("Unesite password!");
-        else {
-            Korisnik korisnik = KorisnikManager.findByEmail(email.getText());
-            if (korisnik == null) loginMessage.setText("Unijeli ste neispravne podatke!");
-            else if (!korisnik.getPassword().equals(password.getText()))
-                loginMessage.setText("Unijeli ste neispravne podatke!");
-            else {
+//        if (email.getText().isEmpty()) loginMessage.setText("Unesite email!");
+//        else if (password.getText().isEmpty()) loginMessage.setText("Unesite password!");
+//        else {
+//            Korisnik korisnik = KorisnikManager.findByEmail(email.getText());
+//            if (korisnik == null) loginMessage.setText("Unijeli ste neispravne podatke!");
+//            else if (!korisnik.getPassword().equals(password.getText()))
+//                loginMessage.setText("Unijeli ste neispravne podatke!");
+//            else {
                 Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucice.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 stage.setScene(scene);
                 stage.show();
-            }
-        }
+//            }
+//        }
     }
 }

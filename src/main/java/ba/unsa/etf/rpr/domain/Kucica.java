@@ -1,7 +1,7 @@
 package ba.unsa.etf.rpr.domain;
 
 import java.math.BigDecimal;
-import java.sql.Blob;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Kucica {
@@ -9,12 +9,12 @@ public class Kucica {
     private String ime;
     private BigDecimal cijena;
     private boolean jacuzzi;
-    private Blob slika;
+    private byte[] slika;
 
     public Kucica() {
     }
 
-    public Kucica(int id, String ime, BigDecimal cijena, boolean jacuzzi, Blob slika) {
+    public Kucica(int id, String ime, BigDecimal cijena, boolean jacuzzi, byte[] slika) {
         this.id = id;
         this.ime = ime;
         this.cijena = cijena;
@@ -54,11 +54,11 @@ public class Kucica {
         this.jacuzzi = jacuzzi;
     }
 
-    public Blob getSlika() {
+    public byte[] getSlika() {
         return slika;
     }
 
-    public void setSlika(Blob slika) {
+    public void setSlika(byte[] slika) {
         this.slika = slika;
     }
 
@@ -82,6 +82,6 @@ public class Kucica {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, ime, cijena, jacuzzi, slika);
+        return Objects.hash(id, ime, cijena, jacuzzi, Arrays.hashCode(slika));
     }
 }
