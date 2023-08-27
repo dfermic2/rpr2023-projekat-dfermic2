@@ -9,7 +9,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="380.0" maxWidth="300.0" minHeight="380.0" minWidth="300.0" prefHeight="380.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.KucicaController">
+<?import java.lang.String?>
+<VBox alignment="CENTER" maxHeight="380.0" maxWidth="300.0" minHeight="380.0" minWidth="300.0" prefHeight="380.0" prefWidth="300.0" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.KucicaController">
    <children>
       <ImageView fx:id="slika" fitHeight="216.0" fitWidth="279.0" pickOnBounds="true" preserveRatio="true">
          <VBox.margin>
@@ -66,4 +67,8 @@
          </padding>
       </HBox>
    </children>
+   <styleClass>
+      <String fx:value="kucica" />
+      <String fx:value="shadow" />
+   </styleClass>
 </VBox>
