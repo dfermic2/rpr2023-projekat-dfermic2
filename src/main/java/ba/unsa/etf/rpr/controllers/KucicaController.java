@@ -19,7 +19,7 @@ public class KucicaController {
 
     public void setData(Kucica kucica) {
         ime.setText(kucica.getIme());
-        cijena.setText(cijena + "KM");
+        cijena.setText(kucica.getCijena() + "KM");
 
         if (kucica.isJacuzzi()) jacuzzi.setText("Jacuzzi");
         else jacuzzi.setText("");
