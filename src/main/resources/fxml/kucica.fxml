@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.KucicaController">
    <children>
       <ImageView fx:id="slika" fitHeight="216.0" fitWidth="279.0" pickOnBounds="true" preserveRatio="true">
          <VBox.margin>

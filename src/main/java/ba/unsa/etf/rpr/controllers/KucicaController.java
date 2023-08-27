@@ -1,21 +1,21 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.domain.Kucica;
-import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.awt.*;
+
 import java.io.ByteArrayInputStream;
 
 public class KucicaController {
 
     @FXML
-    Label ime, jacuzzi, cijena;
+    private Label ime, jacuzzi, cijena;
 
     @FXML
-    ImageView slika;
+    private ImageView slika;
 
     public void setData(Kucica kucica) {
         ime.setText(kucica.getIme());

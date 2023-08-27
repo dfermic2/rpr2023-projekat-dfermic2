@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.KuciceController">
    <children>
       <HBox prefHeight="85.0" prefWidth="1000.0" style="-fx-background-color: #3C5A44;" />
       <HBox prefHeight="83.0" prefWidth="1000.0" />
