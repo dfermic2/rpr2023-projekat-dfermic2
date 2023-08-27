@@ -19,10 +19,10 @@ public class KucicaController {
 
     public void setData(Kucica kucica) {
         ime.setText(kucica.getIme());
-        cijena.setText(kucica.getCijena() + "KM");
+        cijena.setText(kucica.getCijena() + "€");
 
         if (kucica.isJacuzzi()) jacuzzi.setText("Jacuzzi");
-        else jacuzzi.setText("");
+        else jacuzzi.setText("Nema Jacuzzi");
 
         Image image = new Image(new ByteArrayInputStream(kucica.getSlika()));
         slika.setImage(image);

@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.KuciceController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.KuciceController">
    <children>
-      <HBox prefHeight="85.0" prefWidth="1000.0" style="-fx-background-color: #3C5A44;" />
-      <HBox prefHeight="83.0" prefWidth="1000.0" />
-      <ScrollPane>
+      <HBox prefHeight="79.0" prefWidth="1315.0" style="-fx-background-color: #3C5A44;">
+         <children>
+            <Label alignment="CENTER" prefHeight="78.0" prefWidth="1315.0" text="Dolina Sreće" textFill="WHITE">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+         </children></HBox>
+      <HBox prefHeight="83.0" prefWidth="1000.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="84.0" prefWidth="1315.0" text="Datumi">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
+         </children></HBox>
+      <ScrollPane fitToWidth="true">
          <content>
-            <TilePane fx:id="kuciceLayout" alignment="CENTER" hgap="15.0" prefHeight="723.0" prefWidth="1000.0" vgap="15.0" />
+            <TilePane fx:id="kuciceLayout" alignment="CENTER" hgap="25.0" vgap="25.0">
+               <padding>
+                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+               </padding></TilePane>
          </content>
       </ScrollPane>
    </children>
