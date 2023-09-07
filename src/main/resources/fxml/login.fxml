@@ -65,6 +65,76 @@
       </VBox>
    </center>
    <right>
-      <VBox alignment="CENTER" prefHeight="810.0" prefWidth="625.0" style="-fx-background-color: #B9D0AA;" BorderPane.alignment="CENTER" />
+      <VBox fx:id="passwordRegistracija" alignment="CENTER" prefHeight="810.0" prefWidth="625.0" spacing="15.0" style="-fx-background-color: #B9D0AA;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="79.0" prefWidth="625.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="16.0" prefWidth="625.0" text="Registrujte se">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="715.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="123.0" text="Ime">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField id="email" fx:id="ime" prefHeight="30.0" prefWidth="261.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="715.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="123.0" text="Prezime">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField id="email" fx:id="prezime" prefHeight="30.0" prefWidth="260.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="715.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="123.0" text="Email">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField id="email" fx:id="emailRegistracija" prefHeight="30.0" prefWidth="260.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="715.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="123.0" text="Adresa">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField id="email" fx:id="adresa" prefHeight="30.0" prefWidth="260.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="715.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="129.0" text="Password">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <PasswordField id="password" fx:id="passwordRegistracija" onAction="#onLogin" prefHeight="30.0" prefWidth="264.0" />
+               </children>
+               <padding>
+                  <Insets bottom="25.0" />
+               </padding>
+            </HBox>
+            <Button id="loginBtn" fx:id="loginBtn1" mnemonicParsing="false" onAction="#onLogin" prefHeight="27.0" prefWidth="246.0" text="Log in">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Label fx:id="loginMessage1" prefHeight="40.0" prefWidth="375.0" textAlignment="CENTER" />
+         </children></VBox>
    </right>
 </BorderPane>
