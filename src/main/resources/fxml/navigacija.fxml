@@ -20,7 +20,7 @@
                </image>
             </ImageView>
             <Pane prefHeight="65.0" prefWidth="597.0" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" text="Pocetna">
+            <Button mnemonicParsing="false" onAction="#onPocetna" prefHeight="50.0" prefWidth="110.0" text="Pocetna">
                <font>
                   <Font size="20.0" />
                </font>
@@ -28,7 +28,7 @@
                   <String fx:value="navBtn" />
                </styleClass>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" text="O nama">
+            <Button mnemonicParsing="false" onAction="#onONama" prefHeight="50.0" prefWidth="110.0" text="O nama">
                <font>
                   <Font size="20.0" />
                </font>

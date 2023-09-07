@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" spacing="30.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <fx:include source="navigacija.fxml" />
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="365.0" text="O NAMA">
+            <font>
+                <Font size="36.0" />
+            </font>
+        </Label>
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="487.0" prefWidth="840.0" text="Dolina Sreće je novootvoreni kompleks izgrađen u srcu netaknute prirode. Nalazi se u Nadiocima nadomak Viteza. Ono što čini ovo etno selo zaista čarobnim jesu kućice koje izgledaju kao iz Vaših dječjih snova. Vaša srca će utopliti ljupke životinje koje ovu Dolinu čine još sretnijom (zečevi, mačke,magarac, konji, patke, ribe, golubovi), a jutarnja buđenja će Vam uljepšati cvrkuti ptica i pjev pijetlova i žubor potoka. Ono što će Vam zaista izmamiti osmijeh na licu i urezati se u najljepša sjećanja jest dostupna jahačka staza sa vrhunski obučenim konjima.Dolina Sreće nalazi se svega 11km od povjesnog grada Travnika u kojem se nalazi povjesni suvenir, kuća velikog Ive Andrića i Tvrđava Stari grad,a svega 18km od Zenice. Autobusni kolodvor nalazi se 6km udaljenosti sa stalnim linijama za navedene gradove. Naravno, neizbježno je spomenuti i naša brda i dolove, čarobnu šumu dostupnu za šetnju. Također, svega 5km udaljenosti nalazi se rent auta i za ljubitelje šopinga veliki šoping centri. U okolici nalaze se najbolji restorani, bazeni, spa centri, a također Vama na usluzi u kućicama se nalazi meni restorana Sunce sa dostavom.Dolina Sreće trenutno u ponudi ima 9 kućica za odmor, jahačku stazu, bazen, konobu sa nezamjenjivom domaćom hranom i još mnogobrojnog sadržaja koji se stalno dopunjuje. Za kraj, neizbježno je spomenuti noćnu idilu koja će zasigurno ostati u Vašim mislima. Vidimo se!" textAlignment="CENTER" wrapText="true">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+    </children>
+</VBox>
