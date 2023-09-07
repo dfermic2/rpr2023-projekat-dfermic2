@@ -8,4 +8,8 @@ public class KorisnikManager {
     public static Korisnik findByEmail(String email) throws DolinaSreceException {
         return DaoFactory.korisnikDao().getByEmail(email);
     }
+
+    public static Korisnik add(Korisnik korisnik) throws DolinaSreceException {
+        return DaoFactory.korisnikDao().add(korisnik);
+    }
 }

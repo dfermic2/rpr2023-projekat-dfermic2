@@ -65,7 +65,7 @@
       </VBox>
    </center>
    <right>
-      <VBox fx:id="passwordRegistracija" alignment="CENTER" prefHeight="810.0" prefWidth="625.0" spacing="15.0" style="-fx-background-color: #B9D0AA;" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="810.0" prefWidth="625.0" spacing="15.0" style="-fx-background-color: #B9D0AA;" BorderPane.alignment="CENTER">
          <children>
             <VBox prefHeight="79.0" prefWidth="625.0">
                <children>
@@ -129,12 +129,12 @@
                   <Insets bottom="25.0" />
                </padding>
             </HBox>
-            <Button id="loginBtn" fx:id="loginBtn1" mnemonicParsing="false" onAction="#onLogin" prefHeight="27.0" prefWidth="246.0" text="Log in">
+            <Button id="loginBtn" fx:id="registerBtn" mnemonicParsing="false" onAction="#onRegister" prefHeight="27.0" prefWidth="246.0" text="Register">
                <font>
                   <Font size="17.0" />
                </font>
             </Button>
-            <Label fx:id="loginMessage1" prefHeight="40.0" prefWidth="375.0" textAlignment="CENTER" />
+            <Label fx:id="registracijaMessage" prefHeight="40.0" prefWidth="375.0" textAlignment="CENTER" />
          </children></VBox>
    </right>
 </BorderPane>
