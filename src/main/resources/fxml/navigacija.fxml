@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
+<?import java.lang.String?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.NavigacijaController">
    <center>
       <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
@@ -24,16 +24,25 @@
                <font>
                   <Font size="18.0" />
                </font>
+               <styleClass>
+                  <String fx:value="navBtn" />
+               </styleClass>
             </Button>
             <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="186.0" text="O nama">
                <font>
                   <Font size="18.0" />
                </font>
+               <styleClass>
+                  <String fx:value="navBtn" />
+               </styleClass>
             </Button>
             <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="186.0" text="Kontakt">
                <font>
                   <Font size="18.0" />
                </font>
+               <styleClass>
+                  <String fx:value="navBtn" />
+               </styleClass>
             </Button>
          </children>
          <padding>

@@ -15,3 +15,7 @@
 .radius{
     -fx-background-radius: 30;
 }
+
+.navBtn{
+    -fx-background-color: transparent;
+}
