@@ -18,7 +18,6 @@
 
 .navBtn{
     -fx-border-color: transparent;
-    -fx-border-width: 0;
-    -fx-background-radius: 0;
     -fx-background-color: transparent;
+    -fx-text-fill: #E4E4E4;
 }
