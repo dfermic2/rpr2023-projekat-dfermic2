@@ -4,12 +4,11 @@ import ba.unsa.etf.rpr.domain.Rezervacija;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 
 import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class RezervacijaDaoSQLImplementation extends AbstractDao<Rezervacija> implements RezervacijaDao {
     public static RezervacijaDaoSQLImplementation instance = null;
@@ -64,7 +63,21 @@ public class RezervacijaDaoSQLImplementation extends AbstractDao<Rezervacija> im
     }
 
     @Override
-    public List<Rezervacija> getBetweenDates(Date date) {
-        return null;
+    public Set<Integer> getBetweenDates(Date date) {
+        String sql = "SELECT id_kucica FROM rezervacije WHERE ? BETWEEN pocetak AND kraj";
+        Set<Integer> kuciceId = new HashSet<>();
+
+        try {
+            Connection connection = RezervacijaDaoSQLImplementation.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setDate(1, (java.sql.Date) date);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) kuciceId.add(resultSet.getInt("id_kucica"));
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return kuciceId;
     }
 }
