@@ -39,8 +39,17 @@ public class KuciceController implements Initializable {
 
                 pocetakDate.setDayCellFactory(param -> new DateCell() {
                     @Override
-                    public void updateItem(LocalDate localDate, boolean empty) {
-                        super.updateItem(localDate, empty);
+                    public void updateItem(LocalDate date, boolean empty) {
+                        super.updateItem(date, empty);
+                        setDisable(empty || date.isBefore(LocalDate.now()));
+                    }
+                });
+
+                krajDate.setDayCellFactory(param -> new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate date, boolean empty) {
+                        super.updateItem(date, empty);
+                        setDisable(empty || date.isBefore(pocetakDate.getValue()));
                     }
                 });
             }
