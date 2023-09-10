@@ -13,14 +13,6 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.KuciceController">
    <children>
-<!--      <HBox prefHeight="79.0" prefWidth="1315.0" style="-fx-background-color: #3C5A44;">-->
-<!--         <children>-->
-<!--            <Label alignment="CENTER" prefHeight="75.0" prefWidth="1315.0" text="Dolina Sreće" textFill="WHITE">-->
-<!--               <font>-->
-<!--                  <Font size="48.0" />-->
-<!--               </font>-->
-<!--            </Label>-->
-<!--         </children></HBox>-->
       <fx:include source="navigacija.fxml" />
       <HBox alignment="CENTER_LEFT" prefHeight="83.0" prefWidth="1000.0">
          <children>

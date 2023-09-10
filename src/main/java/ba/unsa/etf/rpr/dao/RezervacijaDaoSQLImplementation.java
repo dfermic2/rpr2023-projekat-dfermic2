@@ -70,7 +70,7 @@ public class RezervacijaDaoSQLImplementation extends AbstractDao<Rezervacija> im
         try {
             Connection connection = RezervacijaDaoSQLImplementation.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setDate(1, (java.sql.Date) date);
+            preparedStatement.setDate(1, new java.sql.Date(date.getTime()));
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) kuciceId.add(resultSet.getInt("id_kucica"));

@@ -1,8 +1,10 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.KucicaManager;
+import ba.unsa.etf.rpr.business.RezervacijaManager;
 import ba.unsa.etf.rpr.domain.Kucica;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,12 +13,12 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 public class KuciceController implements Initializable {
 
@@ -65,5 +67,8 @@ public class KuciceController implements Initializable {
     }
 
     public void onTrazi(ActionEvent actionEvent) {
+        //Uzmi sve kucice kod kojih su ispunjeni uvijeti
+        Set<Integer> kuciceId = RezervacijaManager.findBetweenDates(pocetakDate.getValue());
+        System.out.println("KUCICA PRONADJENA: " + kuciceId);
     }
 }
