@@ -11,6 +11,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -37,6 +38,8 @@ public class KuciceController implements Initializable {
                 kucicaController.setData(kucica);
                 kuciceLayout.getChildren().add(vBox);
 
+
+                // TODO: REFACTOR
                 pocetakDate.setDayCellFactory(param -> new DateCell() {
                     @Override
                     public void updateItem(LocalDate date, boolean empty) {
@@ -59,6 +62,8 @@ public class KuciceController implements Initializable {
         } catch (IOException | DolinaSreceException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    public void onTrazi(ActionEvent actionEvent) {
     }
 }
