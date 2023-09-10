@@ -27,4 +27,8 @@ public class KucicaController {
         Image image = new Image(new ByteArrayInputStream(kucica.getSlika()));
         slika.setImage(image);
     }
+
+    public void onRezervisi() {
+
+    }
 }

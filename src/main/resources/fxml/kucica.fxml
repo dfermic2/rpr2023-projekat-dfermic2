@@ -59,7 +59,7 @@
                </font>
             </Label>
             <Pane prefHeight="39.0" prefWidth="86.0" />
-            <Button fx:id="rezervisanje" mnemonicParsing="false" prefHeight="56.0" prefWidth="171.0" text="Rezerviši">
+            <Button fx:id="rezervisanje" mnemonicParsing="false" onAction="#onRezervisi" prefHeight="56.0" prefWidth="171.0" text="Rezerviši">
                <styleClass>
                   <String fx:value="btn" />
                </styleClass>

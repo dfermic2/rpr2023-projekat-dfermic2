@@ -4,7 +4,6 @@ import ba.unsa.etf.rpr.business.KucicaManager;
 import ba.unsa.etf.rpr.business.RezervacijaManager;
 import ba.unsa.etf.rpr.domain.Kucica;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -45,21 +44,21 @@ public class KuciceController implements Initializable {
 
             showKucice(kucicaList);
             // TODO: REFACTOR
-                pocetakDate.setDayCellFactory(param -> new DateCell() {
-                    @Override
-                    public void updateItem(LocalDate date, boolean empty) {
-                        super.updateItem(date, empty);
-                        setDisable(empty || date.isBefore(LocalDate.now()));
-                    }
-                });
+            pocetakDate.setDayCellFactory(param -> new DateCell() {
+                @Override
+                public void updateItem(LocalDate date, boolean empty) {
+                    super.updateItem(date, empty);
+                    setDisable(empty || date.isBefore(LocalDate.now()));
+                }
+            });
 
-                krajDate.setDayCellFactory(param -> new DateCell() {
-                    @Override
-                    public void updateItem(LocalDate date, boolean empty) {
-                        super.updateItem(date, empty);
-                        setDisable(empty || date.isBefore(pocetakDate.getValue()));
-                    }
-                });
+            krajDate.setDayCellFactory(param -> new DateCell() {
+                @Override
+                public void updateItem(LocalDate date, boolean empty) {
+                    super.updateItem(date, empty);
+                    setDisable(empty || date.isBefore(pocetakDate.getValue()));
+                }
+            });
 
             pocetakDate.setValue(LocalDate.now());
 
@@ -76,8 +75,6 @@ public class KuciceController implements Initializable {
 
         kuciceLayout.getChildren().clear();
         showKucice(kuciceFiltered);
-
-        System.out.println("KUCICA: " + kuciceFiltered);
     }
 
     private void showKucice(List<Kucica> kucicaList) throws IOException {
