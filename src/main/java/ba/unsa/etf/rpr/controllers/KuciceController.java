@@ -68,8 +68,7 @@ public class KuciceController implements Initializable {
         }
     }
 
-    public void onTrazi(ActionEvent actionEvent) throws IOException {
-        //Uzmi sve kucice kod kojih su ispunjeni uvijeti
+    public void onTrazi() throws IOException {
         Set<Integer> kuciceId = RezervacijaManager.findBetweenDates(pocetakDate.getValue());
         kuciceId.addAll(RezervacijaManager.findBetweenDates(krajDate.getValue()));
 
