@@ -6,11 +6,14 @@ import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DateCell;
+import javafx.scene.control.DatePicker;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -18,6 +21,9 @@ public class KuciceController implements Initializable {
 
     @FXML
     TilePane kuciceLayout;
+
+    @FXML
+    DatePicker pocetakDate, krajDate;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -30,10 +36,20 @@ public class KuciceController implements Initializable {
                 KucicaController kucicaController = fxmlLoader.getController();
                 kucicaController.setData(kucica);
                 kuciceLayout.getChildren().add(vBox);
+
+                pocetakDate.setDayCellFactory(param -> new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate localDate, boolean empty) {
+                        super.updateItem(localDate, empty);
+                    }
+                });
             }
+
+            pocetakDate.setValue(LocalDate.now());
 
         } catch (IOException | DolinaSreceException e) {
             throw new RuntimeException(e);
         }
+
     }
 }
