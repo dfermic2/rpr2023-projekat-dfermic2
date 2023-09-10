@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -60,5 +61,10 @@ public class RezervacijaDaoSQLImplementation extends AbstractDao<Rezervacija> im
     public Rezervacija prepareItem(Rezervacija item, int id) {
         item.setId(id);
         return item;
+    }
+
+    @Override
+    public List<Rezervacija> getBetweenDates(Date date) {
+        return null;
     }
 }
