@@ -24,22 +24,27 @@ public class LoginController {
     public Label loginMessage, registracijaMessage;
 
     public void onLogin(ActionEvent actionEvent) throws DolinaSreceException, IOException {
+        Korisnik korisnik = new Korisnik();
 
-//        if (email.getText().isEmpty()) loginMessage.setText("Unesite email!");
-//        else if (password.getText().isEmpty()) loginMessage.setText("Unesite password!");
-//        else {
-//            Korisnik korisnik = KorisnikManager.findByEmail(email.getText());
-//            if (korisnik == null) loginMessage.setText("Unijeli ste neispravne podatke!");
-//            else if (!korisnik.getPassword().equals(password.getText()))
-//                loginMessage.setText("Unijeli ste neispravne podatke!");
-//            else {
+        if (email.getText().isEmpty()) loginMessage.setText("Unesite email!");
+        else if (password.getText().isEmpty()) loginMessage.setText("Unesite password!");
+        else {
+            korisnik = KorisnikManager.findByEmail(email.getText());
+            if (korisnik == null) loginMessage.setText("Unijeli ste neispravne podatke!");
+            else if (!korisnik.getPassword().equals(password.getText()))
+                loginMessage.setText("Unijeli ste neispravne podatke!");
+            else {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucice.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+
+        KuciceController kuciceController = fxmlLoader.getController();
+        kuciceController.setIdKorisnik(korisnik.getId());
+
         stage.setScene(scene);
         stage.show();
-//            }
-//        }
+            }
+        }
     }
 
     public void onRegister(ActionEvent actionEvent) throws DolinaSreceException, IOException {
@@ -54,10 +59,14 @@ public class LoginController {
         else if (!Pattern.compile(emailRegex).matcher(emailRegistracija.getText()).matches()) registracijaMessage.setText("Neispravan format email adrese!");
         else if (KorisnikManager.findByEmail(emailRegistracija.getText()) != null) registracijaMessage.setText("Email se vec koristi!");
         else {
-            KorisnikManager.add(new Korisnik(0, ime.getText(), prezime.getText(), emailRegistracija.getText(), adresa.getText(), passwordRegistracija.getText()));
+            Korisnik korisnik = KorisnikManager.add(new Korisnik(0, ime.getText(), prezime.getText(), emailRegistracija.getText(), adresa.getText(), passwordRegistracija.getText()));
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucice.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
+
+            KuciceController kuciceController = fxmlLoader.getController();
+            kuciceController.setIdKorisnik(korisnik.getId());
+
             stage.setScene(scene);
             stage.show();
         }
