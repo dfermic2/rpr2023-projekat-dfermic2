@@ -3,15 +3,18 @@ package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.domain.Rezervacija;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 
-import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Date;
+import java.sql.*;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
+/**
+ * MySQL implementation of RezervacijaDao
+ *
+ * @author Dijana Fermic
+ */
 public class RezervacijaDaoSQLImplementation extends AbstractDao<Rezervacija> implements RezervacijaDao {
     private static RezervacijaDaoSQLImplementation instance = null;
 
