@@ -14,7 +14,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.SimpleTimeZone;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -131,7 +130,7 @@ public class App {
         List<Kucica> kuciceFiltered = kucicaList.stream().filter(kucica -> !kuciceId.contains(kucica.getId())).collect(Collectors.toList());
 
         System.out.println("Slobodne kućice: ");
-        for(Kucica kucica : kuciceFiltered) {
+        for (Kucica kucica : kuciceFiltered) {
             System.out.println(kucica.toString());
         }
         Kucica kucica = unosKucice(kuciceFiltered);
@@ -152,7 +151,7 @@ public class App {
         System.out.println("Unesite id kućice koju želite rezervisati: ");
         int kucicaId = scanner.nextInt();
         for (Kucica kucica : kuciceFiltered) {
-            if(kucica.getId() == kucicaId)
+            if (kucica.getId() == kucicaId)
                 return kucica;
         }
         System.out.println("Pogrešan id!");
@@ -166,10 +165,11 @@ public class App {
         String datum = scanner.nextLine();
         LocalDate localDate = returnValidDate(datum);
 
-        if(localDate == null || localDate.isBefore(min)) {
+        if (localDate == null || localDate.isBefore(min)) {
             System.out.println("Pogršan unos!");
             unosDatuma(min);
-        };
+        }
+        ;
         return localDate;
     }
 
