@@ -3,20 +3,16 @@ package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.domain.Korisnik;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
-import org.mockito.MockedStatic;
+import org.junit.jupiter.api.Test;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
 import java.util.TreeMap;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class KorisnikDaoSQLImplementationTest {
 
@@ -54,8 +50,6 @@ public class KorisnikDaoSQLImplementationTest {
 //        when(connection.prepareStatement(any())).thenReturn(preparedStatement);
 //        when(preparedStatement.executeQuery()).thenReturn(resultSet);
 //        when(resultSet.next()).thenReturn(true);
-
-
 
 
     }

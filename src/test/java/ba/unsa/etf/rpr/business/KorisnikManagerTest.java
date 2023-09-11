@@ -12,7 +12,6 @@ import static org.mockito.Mockito.*;
 public class KorisnikManagerTest {
 
 
-
     @Test
     public void testFindByEmail() throws DolinaSreceException {
         KorisnikDao korisnikDao = mock(KorisnikDao.class);
