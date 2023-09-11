@@ -88,7 +88,7 @@ public abstract class AbstractDao<T> implements Dao<T> {
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             int counter = 1;
-            for (Map.Entry<String, Object> entry: row.entrySet()) {
+            for (Map.Entry<String, Object> entry : row.entrySet()) {
                 if (entry.getKey().equals("id")) continue;
                 preparedStatement.setObject(counter, entry.getValue());
                 counter++;
@@ -108,6 +108,7 @@ public abstract class AbstractDao<T> implements Dao<T> {
     public abstract T row2object(ResultSet rs) throws DolinaSreceException;
 
     public abstract Map<String, Object> object2row(T object);
+
     public abstract T prepareItem(T item, int id);
 
     private static String prepareColumnNames(Map<String, Object> row) {
@@ -116,13 +117,7 @@ public abstract class AbstractDao<T> implements Dao<T> {
     }
 
     private static String prepareValues(Map<String, Object> row) {
-//        String values = row.entrySet().stream().filter(o -> !Objects.equals(o.getKey(), "id")).map(o -> addQuotes(o.getValue())).collect(Collectors.joining(","));
         String values = row.entrySet().stream().filter(o -> !Objects.equals(o.getKey(), "id")).map(o -> "?").collect(Collectors.joining(","));
         return "(" + values + ")";
-    }
-
-    private static String addQuotes(Object o) {
-        if(o instanceof String) return "'" + o + "'";
-        else return o.toString();
     }
 }
