@@ -42,19 +42,6 @@ public class KorisnikDaoSQLImplementationTest {
     }
 
     @Test
-    public void testGetByEmail() throws SQLException {
-//        Connection connection = mock(Connection.class);
-//        PreparedStatement preparedStatement = mock(PreparedStatement.class);
-//        MockedStatic<AbstractDao> abstractDaoMockedStatic = mockStatic(AbstractDao.class);
-//        abstractDaoMockedStatic.when(AbstractDao::getConnection).thenReturn(connection);
-//        when(connection.prepareStatement(any())).thenReturn(preparedStatement);
-//        when(preparedStatement.executeQuery()).thenReturn(resultSet);
-//        when(resultSet.next()).thenReturn(true);
-
-
-    }
-
-    @Test
     public void testRow2object() throws DolinaSreceException {
         Assertions.assertEquals(korisnikDaoSQLImplementation.row2object(resultSet), korisnik);
     }
