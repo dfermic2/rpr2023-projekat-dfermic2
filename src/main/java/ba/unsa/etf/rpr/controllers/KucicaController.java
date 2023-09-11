@@ -57,7 +57,7 @@ public class KucicaController {
         alert.setHeaderText("Uspješno ste rezervisali kucicu " + kucica.getIme());
 
         if (alert.showAndWait().get() == ButtonType.OK) {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucice.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/rezervacija.fxml"));
             Parent root = fxmlLoader.load();
             KuciceController kuciceController = fxmlLoader.getController();
             kuciceController.saveRezervacija(kucica);

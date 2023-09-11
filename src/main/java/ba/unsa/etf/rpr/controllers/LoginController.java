@@ -42,7 +42,7 @@ public class LoginController {
                 loginMessage.setText("Unijeli ste neispravne podatke!");
             else {
                 Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucice.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/rezervacija.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
 
                 KuciceController kuciceController = fxmlLoader.getController();
@@ -76,7 +76,7 @@ public class LoginController {
             else {
                 Korisnik korisnik = KorisnikManager.add(new Korisnik(ime.getText(), prezime.getText(), emailRegistracija.getText(), adresa.getText(), passwordRegistracija.getText()));
                 Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucice.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/rezervacija.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
 
                 KuciceController kuciceController = fxmlLoader.getController();
