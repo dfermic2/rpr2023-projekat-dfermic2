@@ -59,7 +59,7 @@ public class LoginController {
         else if (!Pattern.compile(emailRegex).matcher(emailRegistracija.getText()).matches()) registracijaMessage.setText("Neispravan format email adrese!");
         else if (KorisnikManager.findByEmail(emailRegistracija.getText()) != null) registracijaMessage.setText("Email se vec koristi!");
         else {
-            Korisnik korisnik = KorisnikManager.add(new Korisnik(0, ime.getText(), prezime.getText(), emailRegistracija.getText(), adresa.getText(), passwordRegistracija.getText()));
+            Korisnik korisnik = KorisnikManager.add(new Korisnik(ime.getText(), prezime.getText(), emailRegistracija.getText(), adresa.getText(), passwordRegistracija.getText()));
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucice.fxml"));
             Scene scene = new Scene(fxmlLoader.load());

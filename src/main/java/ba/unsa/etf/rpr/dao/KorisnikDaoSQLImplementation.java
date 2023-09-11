@@ -53,7 +53,7 @@ public class KorisnikDaoSQLImplementation extends AbstractDao<Korisnik> implemen
             String adresa = rs.getString("email");
             String password = rs.getString("password");
 
-            return new Korisnik(id, ime, prezime, email, adresa, password);
+            return new Korisnik(ime, prezime, email, adresa, password);
         } catch (SQLException e) {
             throw new DolinaSreceException(e.getMessage(), e);
         }

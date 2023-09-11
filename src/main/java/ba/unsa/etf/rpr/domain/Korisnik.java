@@ -14,8 +14,7 @@ public class Korisnik {
     }
 
     //ID U KONSTRUKTORU?
-    public Korisnik(int id, String ime, String prezime, String email, String adresa, String password) {
-        this.id = id;
+    public Korisnik(String ime, String prezime, String email, String adresa, String password) {
         this.ime = ime;
         this.prezime = prezime;
         this.email = email;
