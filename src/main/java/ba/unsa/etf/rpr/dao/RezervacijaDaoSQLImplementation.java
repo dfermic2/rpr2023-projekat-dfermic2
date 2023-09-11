@@ -50,9 +50,9 @@ public class RezervacijaDaoSQLImplementation extends AbstractDao<Rezervacija> im
         row.put("id", object.getId());
         row.put("id_korisnik", object.getIdKorisnik());
         row.put("id_kucica", object.getIdKucica());
-        row.put("pocetak", object.getPocetak());
-        row.put("kraj", object.getKraj());
-        row.put("cijana", object.getCijena());
+        row.put("pocetak", new java.sql.Date(object.getPocetak().getTime()));
+        row.put("kraj", new java.sql.Date(object.getKraj().getTime()));
+        row.put("cijena", object.getCijena());
         return row;
     }
 

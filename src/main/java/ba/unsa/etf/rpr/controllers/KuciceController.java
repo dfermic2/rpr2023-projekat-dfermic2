@@ -19,14 +19,11 @@ import java.net.URL;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.temporal.Temporal;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import static java.time.temporal.ChronoUnit.DAYS;
 
 public class KuciceController implements Initializable {
 
@@ -100,7 +97,7 @@ public class KuciceController implements Initializable {
     }
 
     public void getKrajDate() {
-        kraj =  krajDate.getValue();
+        kraj = krajDate.getValue();
     }
 
     public void saveIdKorisnik(int idKorisnik) {
