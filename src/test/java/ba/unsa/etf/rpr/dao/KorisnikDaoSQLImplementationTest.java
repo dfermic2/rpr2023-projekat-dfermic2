@@ -2,17 +2,21 @@ package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Korisnik;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
+import org.mockito.MockedStatic;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
 import java.util.TreeMap;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 public class KorisnikDaoSQLImplementationTest {
 
@@ -21,19 +25,16 @@ public class KorisnikDaoSQLImplementationTest {
     private static Korisnik korisnikNoId;
     private static KorisnikDaoSQLImplementation korisnikDaoSQLImplementation;
 
+    private static ResultSet resultSet;
+
     @BeforeAll
-    public static void initialize() {
+    public static void initialize() throws SQLException {
         korisnik = new Korisnik("Mujo", "Mujic", "mujo@mujo.com", "Mu Town 99", "mujo123");
         korisnik.setId(ID);
 
         korisnikNoId = new Korisnik("Mujo", "Mujic", "mujo@mujo.com", "Mu Town 99", "mujo123");
 
-        korisnikDaoSQLImplementation = (KorisnikDaoSQLImplementation) DaoFactory.korisnikDao();
-    }
-
-    @Test
-    public void testRow2object() throws SQLException, DolinaSreceException {
-        ResultSet resultSet = mock(ResultSet.class);
+        resultSet = mock(ResultSet.class);
         when(resultSet.getInt("id")).thenReturn(1);
         when(resultSet.getString("ime")).thenReturn("Mujo");
         when(resultSet.getString("prezime")).thenReturn("Mujic");
@@ -41,7 +42,27 @@ public class KorisnikDaoSQLImplementationTest {
         when(resultSet.getString("adresa")).thenReturn("Mu Town 99");
         when(resultSet.getString("password")).thenReturn("mujo123");
 
-        assertEquals(korisnikDaoSQLImplementation.row2object(resultSet), korisnik);
+        korisnikDaoSQLImplementation = (KorisnikDaoSQLImplementation) DaoFactory.korisnikDao();
+    }
+
+    @Test
+    public void testGetByEmail() throws SQLException {
+//        Connection connection = mock(Connection.class);
+//        PreparedStatement preparedStatement = mock(PreparedStatement.class);
+//        MockedStatic<AbstractDao> abstractDaoMockedStatic = mockStatic(AbstractDao.class);
+//        abstractDaoMockedStatic.when(AbstractDao::getConnection).thenReturn(connection);
+//        when(connection.prepareStatement(any())).thenReturn(preparedStatement);
+//        when(preparedStatement.executeQuery()).thenReturn(resultSet);
+//        when(resultSet.next()).thenReturn(true);
+
+
+
+
+    }
+
+    @Test
+    public void testRow2object() throws DolinaSreceException {
+        Assertions.assertEquals(korisnikDaoSQLImplementation.row2object(resultSet), korisnik);
     }
 
     @Test
@@ -54,12 +75,12 @@ public class KorisnikDaoSQLImplementationTest {
         row.put("adresa", korisnik.getAdresa());
         row.put("password", korisnik.getPassword());
 
-        assertEquals(korisnikDaoSQLImplementation.object2row(korisnik), row);
+        Assertions.assertEquals(korisnikDaoSQLImplementation.object2row(korisnik), row);
 
     }
 
     @Test
     public void testPrepareItem() {
-        assertEquals(korisnikDaoSQLImplementation.prepareItem(korisnikNoId, ID).getId(), ID);
+        Assertions.assertEquals(korisnikDaoSQLImplementation.prepareItem(korisnikNoId, ID).getId(), ID);
     }
 }
