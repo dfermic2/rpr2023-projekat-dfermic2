@@ -48,7 +48,6 @@ public class KuciceController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-
             for (Kucica kucica : kucicaList) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucica.fxml"));
                 VBox vBox = fxmlLoader.load();
@@ -74,8 +73,6 @@ public class KuciceController implements Initializable {
                     setDisable(empty || date.isBefore(pocetakDate.getValue()));
                 }
             });
-
-            pocetakDate.setValue(LocalDate.now());
 
         } catch (IOException e) {
             throw new RuntimeException(e);
