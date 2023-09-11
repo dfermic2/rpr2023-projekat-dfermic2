@@ -11,9 +11,9 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class KorisnikDaoSQLImplementation extends AbstractDao<Korisnik> implements KorisnikDao {
-    public static KorisnikDaoSQLImplementation instance = null;
+    private static KorisnikDaoSQLImplementation instance = null;
 
-    public KorisnikDaoSQLImplementation() {
+    private KorisnikDaoSQLImplementation() {
         super("korisnici");
     }
 
