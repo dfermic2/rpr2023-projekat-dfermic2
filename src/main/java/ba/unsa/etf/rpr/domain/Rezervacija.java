@@ -2,9 +2,13 @@ package ba.unsa.etf.rpr.domain;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
+/**
+ * Model of rezervacija
+ *
+ * @author Dijana Fermic
+ */
 public class Rezervacija {
     private int id;
     private int idKorisnik;
