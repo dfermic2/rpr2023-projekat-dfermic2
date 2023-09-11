@@ -2,6 +2,11 @@ package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
+/**
+ * Model of korisnik
+ *
+ * @author Dijana Fermic
+ */
 public class Korisnik {
     private int id;
     private String ime;
