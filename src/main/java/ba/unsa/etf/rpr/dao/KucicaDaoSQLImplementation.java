@@ -13,16 +13,11 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
 
-public class KucicaDaoSQLImplementation extends AbstractDao<Kucica> implements KucicaDao, Initializable {
+public class KucicaDaoSQLImplementation extends AbstractDao<Kucica> implements KucicaDao {
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("INITIALIZED");
-    }
+    private static KucicaDaoSQLImplementation instance = null;
 
-    public static KucicaDaoSQLImplementation instance = null;
-
-    public KucicaDaoSQLImplementation() {
+    private KucicaDaoSQLImplementation() {
         super("kucice");
     }
 
