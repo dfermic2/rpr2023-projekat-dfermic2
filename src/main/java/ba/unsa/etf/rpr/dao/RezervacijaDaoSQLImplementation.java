@@ -40,7 +40,7 @@ public class RezervacijaDaoSQLImplementation extends AbstractDao<Rezervacija> im
             Date kraj = rs.getDate("kraj");
             BigDecimal cijena = rs.getBigDecimal("cijena");
 
-            return new Rezervacija(id, idKorisnik, idKucica, pocetak.toLocalDate(), kraj.toLocalDate(), cijena);
+            return new Rezervacija(idKorisnik, idKucica, pocetak.toLocalDate(), kraj.toLocalDate(), cijena);
         } catch (SQLException e) {
             throw new DolinaSreceException(e.getMessage(), e);
         }

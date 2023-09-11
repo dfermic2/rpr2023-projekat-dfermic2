@@ -16,8 +16,7 @@ public class Rezervacija {
     public Rezervacija() {
     }
 
-    public Rezervacija(int id, int idKorisnik, int idKucica, LocalDate pocetak, LocalDate kraj, BigDecimal cijena) {
-        this.id = id;
+    public Rezervacija(int idKorisnik, int idKucica, LocalDate pocetak, LocalDate kraj, BigDecimal cijena) {
         this.idKorisnik = idKorisnik;
         this.idKucica = idKucica;
         this.pocetak = pocetak;
