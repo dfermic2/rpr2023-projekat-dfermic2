@@ -110,17 +110,46 @@ public abstract class AbstractDao<T> implements Dao<T> {
         }
     }
 
+    /**
+     * Method for mapping ResultSet into Object
+     *
+     * @param rs - result set from database
+     * @return a Bean object for specific table
+     * @throws DolinaSreceException in case of error with db
+     */
     public abstract T row2object(ResultSet rs) throws DolinaSreceException;
 
+    /**
+     * Method for mapping Object into Map
+     *
+     * @param object - a bean object for specific table
+     * @return key, value sorted map of object
+     */
     public abstract Map<String, Object> object2row(T object);
 
+    /**
+     * Helper method for setting object id
+     * @param item - abject without an id
+     * @param id - value of the id that will be set
+     * @return object with id
+     */
     public abstract T prepareItem(T item, int id);
 
+    /**
+     * Method that helps create a query for prepared statement
+     * @param row - key, value map representing a row that needs to be mapped
+     * @return String containing all column names separated by commas and surrounded with parenthesis
+     */
     private static String prepareColumnNames(Map<String, Object> row) {
         String columnNames = row.keySet().stream().filter(o -> !Objects.equals(o, "id")).collect(Collectors.joining(","));
         return "(" + columnNames + ")";
     }
 
+    /**
+     * Method that helps create a query for prepared statement
+     * @param row - key, value map representing a row that needs to be mapped
+     * @return String containing question marks separated by commas and surrounded with parenthesis
+     */
     private static String prepareValues(Map<String, Object> row) {
         String values = row.entrySet().stream().filter(o -> !Objects.equals(o.getKey(), "id")).map(o -> "?").collect(Collectors.joining(","));
         return "(" + values + ")";
