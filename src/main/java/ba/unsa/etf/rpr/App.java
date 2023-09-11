@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.SimpleTimeZone;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -126,7 +127,25 @@ public class App {
         kuciceId.addAll(RezervacijaManager.findBetweenDates(kraj));
         List<Kucica> kuciceFiltered = kucicaList.stream().filter(kucica -> !kuciceId.contains(kucica.getId())).collect(Collectors.toList());
 
+        System.out.println("Slobodne kućice:");
+        for(Kucica kucica : kuciceFiltered) {
+            System.out.println(kucica.toString());
+        }
+        unosKucice(kuciceFiltered);
 
+    }
+
+    private static int unosKucice(List<Kucica> kuciceFiltered) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Unesite id kućice koju želite rezervisati: ");
+        int kucicaId = scanner.nextInt();
+        for (Kucica kucica : kuciceFiltered) {
+            if(kucica.getId() == kucicaId)
+                return kucicaId;
+        }
+        System.out.println("Pogrešan id!");
+        unosKucice(kuciceFiltered);
+        return kucicaId;
     }
 
     private static LocalDate unosDatuma() {
@@ -139,7 +158,6 @@ public class App {
             System.out.println("Pogršan unos!");
             unosDatuma();
         };
-
         return localDate;
     }
 
@@ -148,11 +166,10 @@ public class App {
         LocalDate localDate;
 
         try {
-            localDate = (LocalDate) dateTimeFormatter.parse(datum);
+            localDate = LocalDate.from(dateTimeFormatter.parse(datum));
+            return localDate;
         } catch (Exception e) {
             return null;
         }
-
-        return localDate;
     }
 }
