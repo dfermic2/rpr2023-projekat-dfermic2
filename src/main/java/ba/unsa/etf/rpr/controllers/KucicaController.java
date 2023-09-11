@@ -2,9 +2,8 @@ package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.domain.Kucica;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -51,14 +50,14 @@ public class KucicaController {
         rezervisanje.setDisable(true);
     }
 
-    public void onRezervisi() throws DolinaSreceException, IOException {
+    public void onRezervisi(ActionEvent actionEvent) throws DolinaSreceException, IOException {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Rezervacija");
         alert.setHeaderText("Uspješno ste rezervisali kucicu " + kucica.getIme());
 
         if (alert.showAndWait().get() == ButtonType.OK) {
             RezervacijaController rezervacijaController = new RezervacijaController();
-            rezervacijaController.saveRezervacija(kucica);
+            rezervacijaController.saveRezervacija(kucica, actionEvent);
         }
     }
 }

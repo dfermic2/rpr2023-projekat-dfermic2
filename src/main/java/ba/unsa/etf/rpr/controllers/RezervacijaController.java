@@ -5,13 +5,17 @@ import ba.unsa.etf.rpr.business.RezervacijaManager;
 import ba.unsa.etf.rpr.domain.Kucica;
 import ba.unsa.etf.rpr.domain.Rezervacija;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -111,16 +115,26 @@ public class RezervacijaController implements Initializable {
         rezervacija.setIdKorisnik(idKorisnik);
     }
 
-    public void saveRezervacija(Kucica kucica) throws DolinaSreceException, IOException {
+    public void saveRezervacija(Kucica kucica, ActionEvent actionEvent) throws DolinaSreceException, IOException {
         rezervacija.setPocetak(pocetak);
         rezervacija.setKraj(kraj);
         rezervacija.setIdKucica(kucica.getId());
         rezervacija.setCijena(returnUkupnaCijena(kucica.getCijena()));
+
+        reloadRezervacije(actionEvent);
 
         RezervacijaManager.add(rezervacija);
     }
 
     private BigDecimal returnUkupnaCijena(BigDecimal cijena) {
         return cijena.multiply(BigDecimal.valueOf(DAYS.between(pocetak, kraj)));
+    }
+
+    private void reloadRezervacije(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/rezervacija.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.show();
     }
 }
