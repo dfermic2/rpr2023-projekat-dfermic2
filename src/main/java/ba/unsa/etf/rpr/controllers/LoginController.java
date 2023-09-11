@@ -8,11 +8,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Optional;
 import java.util.regex.Pattern;
 
 public class LoginController {
@@ -24,7 +26,7 @@ public class LoginController {
     public Label loginMessage, registracijaMessage;
 
     public void onLogin(ActionEvent actionEvent) throws DolinaSreceException, IOException {
-        Korisnik korisnik = new Korisnik();
+        Korisnik korisnik;
 
         if (email.getText().isEmpty()) loginMessage.setText("Unesite email!");
         else if (password.getText().isEmpty()) loginMessage.setText("Unesite password!");
