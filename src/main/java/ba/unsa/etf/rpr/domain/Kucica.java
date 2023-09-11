@@ -4,6 +4,11 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Objects;
 
+/**
+ * Model of Kucica
+ *
+ * @author Dijana Fermic
+ */
 public class Kucica {
     private int id;
     private String ime;
