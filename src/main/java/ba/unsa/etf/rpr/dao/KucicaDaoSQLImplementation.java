@@ -41,7 +41,7 @@ public class KucicaDaoSQLImplementation extends AbstractDao<Kucica> implements K
             boolean jacuzzi = rs.getBoolean("jacuzzi");
             byte[] slika = rs.getBlob("slika").getBinaryStream().readAllBytes();
 
-            return new Kucica(id, ime, cijena, jacuzzi, slika);
+            return new Kucica(ime, cijena, jacuzzi, slika);
         } catch (SQLException e) {
             throw new DolinaSreceException(e.getMessage(), e);
         } catch (IOException e) {

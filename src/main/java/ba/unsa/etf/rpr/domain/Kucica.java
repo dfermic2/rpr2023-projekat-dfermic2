@@ -14,8 +14,7 @@ public class Kucica {
     public Kucica() {
     }
 
-    public Kucica(int id, String ime, BigDecimal cijena, boolean jacuzzi, byte[] slika) {
-        this.id = id;
+    public Kucica(String ime, BigDecimal cijena, boolean jacuzzi, byte[] slika) {
         this.ime = ime;
         this.cijena = cijena;
         this.jacuzzi = jacuzzi;
