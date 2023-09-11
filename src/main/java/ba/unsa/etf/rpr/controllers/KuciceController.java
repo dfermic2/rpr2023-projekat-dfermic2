@@ -24,6 +24,11 @@ import java.util.stream.Collectors;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
+/**
+ * JavaFX controller for showing, filtering and reserving object Kucica
+ *
+ * @author Dijana Fermic
+ */
 public class KuciceController implements Initializable {
 
     @FXML
