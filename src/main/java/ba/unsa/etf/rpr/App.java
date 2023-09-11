@@ -5,8 +5,10 @@ import ba.unsa.etf.rpr.business.KucicaManager;
 import ba.unsa.etf.rpr.business.RezervacijaManager;
 import ba.unsa.etf.rpr.domain.Korisnik;
 import ba.unsa.etf.rpr.domain.Kucica;
+import ba.unsa.etf.rpr.domain.Rezervacija;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -15,6 +17,8 @@ import java.util.Set;
 import java.util.SimpleTimeZone;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 public class App {
     public static void main(String[] args) {
@@ -55,7 +59,7 @@ public class App {
                 biranjeLoginRegistracija();
             } else {
                 System.out.println("Uspješno ste prijavljeni!");
-                rezervacija();
+                rezervacija(korisnik.getId());
             }
         } catch (DolinaSreceException e) {
             throw new RuntimeException(e);
@@ -108,7 +112,7 @@ public class App {
     }
 
     //Validacija da je pocetak prije kraja i sl.
-    private static void rezervacija() {
+    private static void rezervacija(int korisnikId) {
         System.out.println("Početak rezervacije");
         LocalDate pocetak = unosDatuma();
 
@@ -131,21 +135,30 @@ public class App {
         for(Kucica kucica : kuciceFiltered) {
             System.out.println(kucica.toString());
         }
-        unosKucice(kuciceFiltered);
+        Kucica kucica = unosKucice(kuciceFiltered);
+        BigDecimal cijena = kucica.getCijena().multiply(BigDecimal.valueOf(DAYS.between(pocetak, kraj)));
 
+        Rezervacija rezervacija = new Rezervacija(korisnikId, kucica.getId(), pocetak, kraj, cijena);
+        try {
+            RezervacijaManager.add(rezervacija);
+            System.out.println("Uspješno ste rezervisali kućicu!");
+        } catch (DolinaSreceException e) {
+            System.out.println("Greška pri kreiranju rezervacije");
+            throw new RuntimeException(e);
+        }
     }
 
-    private static int unosKucice(List<Kucica> kuciceFiltered) {
+    private static Kucica unosKucice(List<Kucica> kuciceFiltered) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Unesite id kućice koju želite rezervisati: ");
         int kucicaId = scanner.nextInt();
         for (Kucica kucica : kuciceFiltered) {
             if(kucica.getId() == kucicaId)
-                return kucicaId;
+                return kucica;
         }
         System.out.println("Pogrešan id!");
         unosKucice(kuciceFiltered);
-        return kucicaId;
+        return null;
     }
 
     private static LocalDate unosDatuma() {
