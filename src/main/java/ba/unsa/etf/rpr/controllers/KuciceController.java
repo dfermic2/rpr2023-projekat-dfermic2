@@ -32,10 +32,10 @@ public class KuciceController implements Initializable {
 
     @FXML
     DatePicker pocetakDate, krajDate;
-    Rezervacija rezervacija = new Rezervacija();
 
-    static LocalDate pocetak;
-    static LocalDate kraj;
+    private static LocalDate pocetak;
+    private static LocalDate kraj;
+    private static final Rezervacija rezervacija = new Rezervacija();
     private final List<Kucica> kucicaList;
 
     {
@@ -76,14 +76,8 @@ public class KuciceController implements Initializable {
     }
 
     public void onTrazi() throws IOException {
-//        rezervacija.setPocetak(returnDate(pocetakDate.getValue()));
-//        rezervacija.setKraj(returnDate(krajDate.getValue()));
-//
-//        pocetak = pocetakDate.getValue();
-//        kraj = krajDate.getValue();
-
-        Set<Integer> kuciceId = RezervacijaManager.findBetweenDates(returnDate(pocetakDate.getValue()));
-        kuciceId.addAll(RezervacijaManager.findBetweenDates(returnDate(krajDate.getValue())));
+        Set<Integer> kuciceId = RezervacijaManager.findBetweenDates(pocetakDate.getValue());
+        kuciceId.addAll(RezervacijaManager.findBetweenDates(krajDate.getValue()));
 
         List<Kucica> kuciceFiltered = kucicaList.stream().filter(kucica -> !kuciceId.contains(kucica.getId())).collect(Collectors.toList());
 
@@ -105,19 +99,11 @@ public class KuciceController implements Initializable {
     }
 
     public void saveRezervacija(Kucica kucica) throws DolinaSreceException {
-//        System.out.println("++++++++++");
-//        System.out.println(kucica.toString());
-//        System.out.println(pocetak);
-//        System.out.println(pocetakDate);
-//        System.out.println("++++++++++");
-
-
-        rezervacija.setPocetak(returnDate(pocetak));
-        rezervacija.setKraj(returnDate(kraj));
+        rezervacija.setPocetak(pocetak);
+        rezervacija.setKraj(kraj);
         rezervacija.setIdKucica(kucica.getId());
         rezervacija.setCijena(returnUkupnaCijena(kucica.getCijena()));
 
-//        System.out.println(rezervacija.toString());
         RezervacijaManager.add(rezervacija);
     }
 
@@ -134,9 +120,5 @@ public class KuciceController implements Initializable {
     private BigDecimal returnUkupnaCijena(BigDecimal cijena) {
 //        return cijena.multiply(BigDecimal.valueOf(DAYS.between(pocetak, kraj)));
         return cijena.multiply(BigDecimal.valueOf(Duration.between(pocetak.atStartOfDay(), kraj.atStartOfDay()).toDays()));
-    }
-
-    private Date returnDate(LocalDate date) {
-        return Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 }

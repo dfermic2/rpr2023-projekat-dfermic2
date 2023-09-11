@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.*;
 
 public class RezervacijaDaoSQLImplementation extends AbstractDao<Rezervacija> implements RezervacijaDao {
@@ -38,7 +40,7 @@ public class RezervacijaDaoSQLImplementation extends AbstractDao<Rezervacija> im
             Date kraj = rs.getDate("kraj");
             BigDecimal cijena = rs.getBigDecimal("cijena");
 
-            return new Rezervacija(id, idKorisnik, idKucica, pocetak, kraj, cijena);
+            return new Rezervacija(id, idKorisnik, idKucica, pocetak.toLocalDate(), kraj.toLocalDate(), cijena);
         } catch (SQLException e) {
             throw new DolinaSreceException(e.getMessage(), e);
         }
@@ -50,8 +52,8 @@ public class RezervacijaDaoSQLImplementation extends AbstractDao<Rezervacija> im
         row.put("id", object.getId());
         row.put("id_korisnik", object.getIdKorisnik());
         row.put("id_kucica", object.getIdKucica());
-        row.put("pocetak", new java.sql.Date(object.getPocetak().getTime()));
-        row.put("kraj", new java.sql.Date(object.getKraj().getTime()));
+        row.put("pocetak", Date.valueOf(object.getPocetak()));
+        row.put("kraj", Date.valueOf(object.getKraj()));
         row.put("cijena", object.getCijena());
         return row;
     }
@@ -63,14 +65,14 @@ public class RezervacijaDaoSQLImplementation extends AbstractDao<Rezervacija> im
     }
 
     @Override
-    public Set<Integer> getBetweenDates(Date date) {
+    public Set<Integer> getBetweenDates(LocalDate date) {
         String sql = "SELECT id_kucica FROM rezervacije WHERE ? BETWEEN pocetak AND kraj";
         Set<Integer> kuciceId = new HashSet<>();
 
         try {
             Connection connection = RezervacijaDaoSQLImplementation.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setDate(1, new java.sql.Date(date.getTime()));
+            preparedStatement.setDate(1, Date.valueOf(date));
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) kuciceId.add(resultSet.getInt("id_kucica"));

@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.domain;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -8,14 +9,14 @@ public class Rezervacija {
     private int id;
     private int idKorisnik;
     private int idKucica;
-    private Date pocetak;
-    private Date kraj;
+    private LocalDate pocetak;
+    private LocalDate kraj;
     private BigDecimal cijena;
 
     public Rezervacija() {
     }
 
-    public Rezervacija(int id, int idKorisnik, int idKucica, Date pocetak, Date kraj, BigDecimal cijena) {
+    public Rezervacija(int id, int idKorisnik, int idKucica, LocalDate pocetak, LocalDate kraj, BigDecimal cijena) {
         this.id = id;
         this.idKorisnik = idKorisnik;
         this.idKucica = idKucica;
@@ -48,19 +49,19 @@ public class Rezervacija {
         this.idKucica = idKucica;
     }
 
-    public Date getPocetak() {
+    public LocalDate getPocetak() {
         return pocetak;
     }
 
-    public void setPocetak(Date pocetak) {
+    public void setPocetak(LocalDate pocetak) {
         this.pocetak = pocetak;
     }
 
-    public Date getKraj() {
+    public LocalDate getKraj() {
         return kraj;
     }
 
-    public void setKraj(Date kraj) {
+    public void setKraj(LocalDate kraj) {
         this.kraj = kraj;
     }
 
