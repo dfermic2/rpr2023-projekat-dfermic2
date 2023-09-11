@@ -111,7 +111,7 @@ public class RezervacijaController implements Initializable {
         rezervacija.setIdKorisnik(idKorisnik);
     }
 
-    public void saveRezervacija(Kucica kucica) throws DolinaSreceException {
+    public void saveRezervacija(Kucica kucica) throws DolinaSreceException, IOException {
         rezervacija.setPocetak(pocetak);
         rezervacija.setKraj(kraj);
         rezervacija.setIdKucica(kucica.getId());
