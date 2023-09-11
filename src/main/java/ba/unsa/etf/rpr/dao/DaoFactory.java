@@ -1,5 +1,10 @@
 package ba.unsa.etf.rpr.dao;
 
+/**
+ * Factory for creating DAO singletons
+ *
+ * @author Dijana Fermic
+ */
 public class DaoFactory {
     private DaoFactory() {
     }
