@@ -18,7 +18,11 @@ public interface Dao<T> {
      */
     T getById(int id) throws DolinaSreceException;
 
-
+    /**
+     * get all entities from database with given id
+     * @return List of entities from database
+     * @throws DolinaSreceException - user defined exception
+     */
     List<T> getAll() throws DolinaSreceException;
 
     T add(T item) throws DolinaSreceException;
