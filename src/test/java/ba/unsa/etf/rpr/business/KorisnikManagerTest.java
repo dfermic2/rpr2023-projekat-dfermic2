@@ -11,6 +11,8 @@ import static org.mockito.Mockito.*;
 
 public class KorisnikManagerTest {
 
+
+
     @Test
     public void testFindByEmail() throws DolinaSreceException {
         KorisnikDao korisnikDao = mock(KorisnikDao.class);
@@ -20,6 +22,8 @@ public class KorisnikManagerTest {
         KorisnikManager.findByEmail("mujo@mujo.com");
 
         verify(korisnikDao).getByEmail("mujo@mujo.com");
+
+        daoFactoryMockedStatic.close();
     }
 
     @Test
@@ -32,5 +36,7 @@ public class KorisnikManagerTest {
         KorisnikManager.add(korisnik);
 
         verify(korisnikDao).add(korisnik);
+
+        daoFactoryMockedStatic.close();
     }
 }
