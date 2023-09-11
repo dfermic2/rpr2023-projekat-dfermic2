@@ -33,14 +33,15 @@ public class RezervacijaDaoSQLImplementation extends AbstractDao<Rezervacija> im
     @Override
     public Rezervacija row2object(ResultSet rs) throws DolinaSreceException {
         try {
-            int id = rs.getInt("id");
-            int idKorisnik = rs.getInt("id_korisnik");
-            int idKucica = rs.getInt("id_kucica");
-            Date pocetak = rs.getDate("pocetak");
-            Date kraj = rs.getDate("kraj");
-            BigDecimal cijena = rs.getBigDecimal("cijena");
+            Rezervacija rezervacija = new Rezervacija();
+            rezervacija.setId(rs.getInt("id"));
+            rezervacija.setIdKorisnik(rs.getInt("id_korisnik"));
+            rezervacija.setIdKucica(rs.getInt("id_kucica"));
+            rezervacija.setPocetak(rs.getDate("pocetak").toLocalDate());
+            rezervacija.setKraj(rs.getDate("kraj").toLocalDate());
+            rezervacija.setCijena(rs.getBigDecimal("cijena"));
 
-            return new Rezervacija(idKorisnik, idKucica, pocetak.toLocalDate(), kraj.toLocalDate(), cijena);
+            return rezervacija;
         } catch (SQLException e) {
             throw new DolinaSreceException(e.getMessage(), e);
         }
