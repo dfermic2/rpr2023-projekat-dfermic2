@@ -16,14 +16,13 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
-import java.time.Duration;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 public class KuciceController implements Initializable {
 
@@ -118,7 +117,6 @@ public class KuciceController implements Initializable {
     }
 
     private BigDecimal returnUkupnaCijena(BigDecimal cijena) {
-//        return cijena.multiply(BigDecimal.valueOf(DAYS.between(pocetak, kraj)));
-        return cijena.multiply(BigDecimal.valueOf(Duration.between(pocetak.atStartOfDay(), kraj.atStartOfDay()).toDays()));
+        return cijena.multiply(BigDecimal.valueOf(DAYS.between(pocetak, kraj)));
     }
 }
