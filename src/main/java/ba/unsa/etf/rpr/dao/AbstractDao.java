@@ -139,6 +139,7 @@ public abstract class AbstractDao<T> implements Dao<T> {
      * Method that helps create a query for prepared statement
      * @param row - key, value map representing a row that needs to be mapped
      * @return String containing all column names separated by commas and surrounded with parenthesis
+     * Example: (id, name, date)
      */
     private static String prepareColumnNames(Map<String, Object> row) {
         String columnNames = row.keySet().stream().filter(o -> !Objects.equals(o, "id")).collect(Collectors.joining(","));
@@ -149,6 +150,7 @@ public abstract class AbstractDao<T> implements Dao<T> {
      * Method that helps create a query for prepared statement
      * @param row - key, value map representing a row that needs to be mapped
      * @return String containing question marks separated by commas and surrounded with parenthesis
+     * Example: (?, ?, ?)
      */
     private static String prepareValues(Map<String, Object> row) {
         String values = row.entrySet().stream().filter(o -> !Objects.equals(o.getKey(), "id")).map(o -> "?").collect(Collectors.joining(","));
