@@ -8,6 +8,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * JavaFX controller for navigating the application
+ *
+ * @author Dijana Fermic
+ */
 public class NavigacijaController {
 
     public void onPocetna(ActionEvent actionEvent) throws IOException {
