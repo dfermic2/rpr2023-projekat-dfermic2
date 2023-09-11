@@ -51,7 +51,6 @@ public class KorisnikDaoSQLImplementation extends AbstractDao<Korisnik> implemen
     @Override
     public Korisnik row2object(ResultSet rs) throws DolinaSreceException {
         try {
-
             Korisnik korisnik = new Korisnik();
             korisnik.setId(rs.getInt("id"));
             korisnik.setIme(rs.getString("ime"));

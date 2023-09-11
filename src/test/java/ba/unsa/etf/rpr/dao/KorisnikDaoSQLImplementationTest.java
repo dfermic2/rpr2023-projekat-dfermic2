@@ -57,7 +57,6 @@ public class KorisnikDaoSQLImplementationTest {
         row.put("password", korisnik.getPassword());
 
         Assertions.assertEquals(korisnikDaoSQLImplementation.object2row(korisnik), row);
-
     }
 
     @Test
