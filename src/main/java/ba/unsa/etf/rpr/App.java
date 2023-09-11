@@ -1,13 +1,19 @@
 package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.business.KorisnikManager;
+import ba.unsa.etf.rpr.business.KucicaManager;
+import ba.unsa.etf.rpr.business.RezervacijaManager;
 import ba.unsa.etf.rpr.domain.Korisnik;
+import ba.unsa.etf.rpr.domain.Kucica;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class App {
     public static void main(String[] args) {
@@ -108,6 +114,18 @@ public class App {
         System.out.println("Kraj rezervacije");
         LocalDate kraj = unosDatuma();
 
+        List<Kucica> kucicaList;
+
+        try {
+            kucicaList = KucicaManager.getAll();
+        } catch (DolinaSreceException e) {
+            throw new RuntimeException(e);
+        }
+
+        Set<Integer> kuciceId = RezervacijaManager.findBetweenDates(pocetak);
+        kuciceId.addAll(RezervacijaManager.findBetweenDates(kraj));
+        List<Kucica> kuciceFiltered = kucicaList.stream().filter(kucica -> !kuciceId.contains(kucica.getId())).collect(Collectors.toList());
+
 
     }
 
@@ -121,6 +139,7 @@ public class App {
             System.out.println("Pogršan unos!");
             unosDatuma();
         };
+
         return localDate;
     }
 
