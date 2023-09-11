@@ -10,7 +10,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.LoginController">
+<?import java.lang.String?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.LoginController">
     <center>
         <VBox alignment="CENTER" prefHeight="810.0" prefWidth="795.0" spacing="20.0" BorderPane.alignment="CENTER">
             <children>
@@ -56,6 +57,9 @@
                     <font>
                         <Font size="17.0" />
                     </font>
+                    <styleClass>
+                        <String fx:value="btnLogin" />
+                    </styleClass>
                 </Button>
                 <Label fx:id="loginMessage" prefHeight="40.0" prefWidth="375.0" textAlignment="CENTER" textFill="#902b2b">
                     <VBox.margin>
@@ -134,6 +138,9 @@
                     <font>
                         <Font size="17.0" />
                     </font>
+                    <styleClass>
+                        <String fx:value="btn" />
+                    </styleClass>
                 </Button>
                 <Label fx:id="registracijaMessage" prefHeight="40.0" prefWidth="375.0" textAlignment="CENTER" textFill="#902b2b" />
             </children>

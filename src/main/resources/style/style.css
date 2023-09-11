@@ -12,6 +12,11 @@
     -fx-background-radius: 100;
 }
 
+.btnLogin{
+    -fx-background-color: #B9D0AA;
+    -fx-background-radius: 100;
+}
+
 .radius{
     -fx-background-radius: 30;
 }
@@ -20,4 +25,8 @@
     -fx-border-color: transparent;
     -fx-background-color: transparent;
     -fx-text-fill: #E4E4E4;
+}
+
+.text-field{
+    -fx-background-radius: 30;
 }
