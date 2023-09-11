@@ -1,12 +1,26 @@
 package ba.unsa.etf.rpr.business;
 
-import junit.framework.TestCase;
+import ba.unsa.etf.rpr.dao.DaoFactory;
+import ba.unsa.etf.rpr.dao.KucicaDao;
+import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 import org.junit.Test;
+import org.mockito.MockedStatic;
 
-public class KucicaManagerTest extends TestCase {
+import static org.mockito.Mockito.*;
+
+public class KucicaManagerTest {
 
     @Test
-    public void testFindById() {
+    public void testFindById() throws DolinaSreceException {
+        KucicaDao kucicaDao = mock(KucicaDao.class);
+        MockedStatic<DaoFactory> daoFactoryMockedStatic = mockStatic(DaoFactory.class);
+        daoFactoryMockedStatic.when(DaoFactory::kucicaDao).thenReturn(kucicaDao);
+
+        KucicaManager.findById(1);
+
+        verify(kucicaDao).getById(1);
+
+        daoFactoryMockedStatic.close();
     }
 
     public void testGetAll() {
