@@ -5,7 +5,6 @@ import ba.unsa.etf.rpr.domain.Rezervacija;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Set;
 
 public class RezervacijaManager {

@@ -48,6 +48,7 @@ public class KuciceController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+
             for (Kucica kucica : kucicaList) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucica.fxml"));
                 VBox vBox = fxmlLoader.load();
@@ -57,7 +58,6 @@ public class KuciceController implements Initializable {
                 kuciceLayout.getChildren().add(vBox);
             }
 
-            // TODO: REFACTOR
             pocetakDate.setDayCellFactory(param -> new DateCell() {
                 @Override
                 public void updateItem(LocalDate date, boolean empty) {
@@ -70,7 +70,8 @@ public class KuciceController implements Initializable {
                 @Override
                 public void updateItem(LocalDate date, boolean empty) {
                     super.updateItem(date, empty);
-                    setDisable(empty || date.isBefore(pocetakDate.getValue()));
+                    if(pocetakDate.getValue() != null) setDisable(empty || date.isBefore(pocetakDate.getValue()));
+                    else setDisable(empty || date.isBefore(LocalDate.now()));
                 }
             });
 
@@ -83,8 +84,11 @@ public class KuciceController implements Initializable {
         Set<Integer> kuciceId = RezervacijaManager.findBetweenDates(pocetakDate.getValue());
         kuciceId.addAll(RezervacijaManager.findBetweenDates(krajDate.getValue()));
 
+        System.out.println(kuciceId);
+
         List<Kucica> kuciceFiltered = kucicaList.stream().filter(kucica -> !kuciceId.contains(kucica.getId())).collect(Collectors.toList());
 
+        System.out.println(kuciceFiltered);
         kuciceLayout.getChildren().clear();
         for (Kucica kucica : kuciceFiltered) {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucica.fxml"));

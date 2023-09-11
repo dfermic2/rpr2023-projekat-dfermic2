@@ -21,14 +21,14 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <DatePicker fx:id="pocetakDate" onAction="#getPocetakDate" prefHeight="45.0" prefWidth="265.0" />
+            <DatePicker fx:id="pocetakDate" editable="false" onAction="#getPocetakDate" prefHeight="45.0" prefWidth="265.0" promptText="Izaberite početak" />
             <Pane prefHeight="83.0" prefWidth="73.0" />
             <Label alignment="CENTER" prefHeight="83.0" prefWidth="67.0" text="Kraj:">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <DatePicker fx:id="krajDate" onAction="#getKrajDate" prefHeight="45.0" prefWidth="265.0" />
+            <DatePicker fx:id="krajDate" editable="false" onAction="#getKrajDate" prefHeight="45.0" prefWidth="265.0" promptText="Izaberite kraj" />
             <Pane prefHeight="83.0" prefWidth="270.0" />
             <Button fx:id="traziBtn" mnemonicParsing="false" onAction="#onTrazi" prefHeight="45.0" prefWidth="197.0" text="Traži">
                <font>
