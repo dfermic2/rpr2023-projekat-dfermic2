@@ -7,6 +7,11 @@ import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 import java.time.LocalDate;
 import java.util.Set;
 
+/**
+ * Business Logic for management of Rezervacija
+ *
+ * @author Dijana Fermic
+ */
 public class RezervacijaManager {
     public static Set<Integer> findBetweenDates(LocalDate date) {
         return DaoFactory.rezervacijaDao().getBetweenDates(date);
