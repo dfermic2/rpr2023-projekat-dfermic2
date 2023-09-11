@@ -86,6 +86,14 @@ public abstract class AbstractDao<T> implements Dao<T> {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            int counter = 1;
+            for (Map.Entry<String, Object> entry: row.entrySet()) {
+                if (entry.getKey().equals("id")) continue;
+                preparedStatement.setObject(counter, entry.getValue());
+                counter++;
+            }
+
             preparedStatement.executeUpdate();
 
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -108,7 +116,8 @@ public abstract class AbstractDao<T> implements Dao<T> {
     }
 
     private static String prepareValues(Map<String, Object> row) {
-        String values = row.entrySet().stream().filter(o -> !Objects.equals(o.getKey(), "id")).map(o -> addQuotes(o.getValue())).collect(Collectors.joining(","));
+//        String values = row.entrySet().stream().filter(o -> !Objects.equals(o.getKey(), "id")).map(o -> addQuotes(o.getValue())).collect(Collectors.joining(","));
+        String values = row.entrySet().stream().filter(o -> !Objects.equals(o.getKey(), "id")).map(o -> "?").collect(Collectors.joining(","));
         return "(" + values + ")";
     }
 
