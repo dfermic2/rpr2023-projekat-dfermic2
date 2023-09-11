@@ -52,7 +52,7 @@ public class LoginController {
         alert.setTitle("Registracija");
         alert.setHeaderText("Uspješno ste registrovani!");
 
-        if (alert.showAndWait().isPresent() && alert.showAndWait().get() == ButtonType.OK) {
+        if (alert.showAndWait().get() == ButtonType.OK) {
 
             String emailRegex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                     + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";

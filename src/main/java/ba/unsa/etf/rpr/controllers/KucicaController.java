@@ -5,7 +5,9 @@ import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -45,9 +47,15 @@ public class KucicaController {
     }
 
     public void onRezervisi() throws DolinaSreceException, IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucice.fxml"));
-        Parent root = fxmlLoader.load();
-        KuciceController kuciceController = fxmlLoader.getController();
-        kuciceController.saveRezervacija(kucica);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Rezervacija");
+        alert.setHeaderText("Uspješno ste rezervisali kucicu " + kucica.getIme());
+
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucice.fxml"));
+            Parent root = fxmlLoader.load();
+            KuciceController kuciceController = fxmlLoader.getController();
+            kuciceController.saveRezervacija(kucica);
+        }
     }
 }
