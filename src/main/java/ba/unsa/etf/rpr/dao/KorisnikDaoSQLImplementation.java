@@ -10,6 +10,11 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * MySQL implementation of KorisnikDao
+ *
+ * @author Dijana Fermic
+ */
 public class KorisnikDaoSQLImplementation extends AbstractDao<Korisnik> implements KorisnikDao {
     private static KorisnikDaoSQLImplementation instance = null;
 
