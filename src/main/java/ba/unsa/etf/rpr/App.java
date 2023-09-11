@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr;
 
+import ba.unsa.etf.rpr.domain.Korisnik;
+
 import java.util.Scanner;
 
 public class App {
@@ -25,7 +27,13 @@ public class App {
     }
 
     private static void prijava() {
-        System.out.println("unijeli ste 1");
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Unesite email: ");
+        String email = scanner.nextLine();
+
+        System.out.print("Unesite password: ");
+        String password = scanner.nextLine();
     }
 
     private static void registracija() {
