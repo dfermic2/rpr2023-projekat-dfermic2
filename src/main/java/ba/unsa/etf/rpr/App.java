@@ -52,6 +52,22 @@ public class App {
     }
 
     private static void registracija() {
-        System.out.println("Unijeli ste 2");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Registracija");
+
+        System.out.print("Unesite ime: ");
+        String ime = scanner.nextLine();
+
+        System.out.print("Unesite prezime: ");
+        String prezime = scanner.nextLine();
+
+        System.out.print("Unesite email: ");
+        String email = scanner.nextLine();
+
+        System.out.print("Unesite adresu: ");
+        String adresa = scanner.nextLine();
+
+        System.out.print("Unesite password: ");
+        String password = scanner.nextLine();
     }
 }
