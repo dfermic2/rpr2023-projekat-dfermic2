@@ -53,7 +53,7 @@ public class KuciceController implements Initializable {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucica.fxml"));
                 VBox vBox = fxmlLoader.load();
                 KucicaController kucicaController = fxmlLoader.getController();
-                kucicaController.setData(kucica);
+                kucicaController.setData(kucica, kucica.getCijena());
                 kucicaController.disableButton();
                 kuciceLayout.getChildren().add(vBox);
             }
@@ -94,7 +94,7 @@ public class KuciceController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucica.fxml"));
             VBox vBox = fxmlLoader.load();
             KucicaController kucicaController = fxmlLoader.getController();
-            kucicaController.setData(kucica);
+            kucicaController.setData(kucica, returnUkupnaCijena(kucica.getCijena()));
             kuciceLayout.getChildren().add(vBox);
         }
     }

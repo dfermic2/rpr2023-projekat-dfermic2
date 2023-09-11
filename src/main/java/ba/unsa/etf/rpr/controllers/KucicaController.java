@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 public class KucicaController {
 
@@ -26,9 +27,9 @@ public class KucicaController {
 
     Kucica kucica;
 
-    public void setData(Kucica kucica) {
+    public void setData(Kucica kucica, BigDecimal cijenaPrikaz) {
         ime.setText(kucica.getIme());
-        cijena.setText(kucica.getCijena() + "€");
+        cijena.setText(cijenaPrikaz + "€");
 
         if (kucica.isJacuzzi()) jacuzzi.setText("Jacuzzi");
         else jacuzzi.setText("Nema Jacuzzi");
