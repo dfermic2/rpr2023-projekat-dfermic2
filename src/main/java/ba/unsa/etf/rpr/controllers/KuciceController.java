@@ -82,13 +82,9 @@ public class KuciceController implements Initializable {
     public void onTrazi() throws IOException {
         Set<Integer> kuciceId = RezervacijaManager.findBetweenDates(pocetakDate.getValue());
         kuciceId.addAll(RezervacijaManager.findBetweenDates(krajDate.getValue()));
-
-        System.out.println(kuciceId);
-
         List<Kucica> kuciceFiltered = kucicaList.stream().filter(kucica -> !kuciceId.contains(kucica.getId())).collect(Collectors.toList());
-
-        System.out.println(kuciceFiltered);
         kuciceLayout.getChildren().clear();
+
         for (Kucica kucica : kuciceFiltered) {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucica.fxml"));
             VBox vBox = fxmlLoader.load();
@@ -100,7 +96,6 @@ public class KuciceController implements Initializable {
 
     public void getPocetakDate() {
         pocetak = pocetakDate.getValue();
-        System.out.println(pocetak.toString());
     }
 
     public void getKrajDate() {
