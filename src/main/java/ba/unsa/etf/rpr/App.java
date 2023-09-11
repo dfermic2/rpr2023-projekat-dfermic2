@@ -111,13 +111,12 @@ public class App {
         }
     }
 
-    //Validacija da je pocetak prije kraja i sl.
     private static void rezervacija(int korisnikId) {
         System.out.println("Početak rezervacije");
-        LocalDate pocetak = unosDatuma();
+        LocalDate pocetak = unosDatuma(LocalDate.now());
 
         System.out.println("Kraj rezervacije");
-        LocalDate kraj = unosDatuma();
+        LocalDate kraj = unosDatuma(pocetak);
 
         List<Kucica> kucicaList;
 
@@ -131,7 +130,7 @@ public class App {
         kuciceId.addAll(RezervacijaManager.findBetweenDates(kraj));
         List<Kucica> kuciceFiltered = kucicaList.stream().filter(kucica -> !kuciceId.contains(kucica.getId())).collect(Collectors.toList());
 
-        System.out.println("Slobodne kućice:");
+        System.out.println("Slobodne kućice: ");
         for(Kucica kucica : kuciceFiltered) {
             System.out.println(kucica.toString());
         }
@@ -161,15 +160,15 @@ public class App {
         return null;
     }
 
-    private static LocalDate unosDatuma() {
+    private static LocalDate unosDatuma(LocalDate min) {
         System.out.println("Unesite datum u formatu yyyy-MM-dd: ");
         Scanner scanner = new Scanner(System.in);
         String datum = scanner.nextLine();
         LocalDate localDate = returnValidDate(datum);
 
-        if(localDate == null) {
+        if(localDate == null || localDate.isBefore(min)) {
             System.out.println("Pogršan unos!");
-            unosDatuma();
+            unosDatuma(min);
         };
         return localDate;
     }
