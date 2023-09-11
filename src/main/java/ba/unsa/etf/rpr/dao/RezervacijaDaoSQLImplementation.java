@@ -13,9 +13,9 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class RezervacijaDaoSQLImplementation extends AbstractDao<Rezervacija> implements RezervacijaDao {
-    public static RezervacijaDaoSQLImplementation instance = null;
+    private static RezervacijaDaoSQLImplementation instance = null;
 
-    public RezervacijaDaoSQLImplementation() {
+    private RezervacijaDaoSQLImplementation() {
         super("rezervacije");
     }
 
