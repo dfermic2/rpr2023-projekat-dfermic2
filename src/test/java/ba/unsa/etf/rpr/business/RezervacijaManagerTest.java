@@ -2,6 +2,8 @@ package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.dao.RezervacijaDao;
+import ba.unsa.etf.rpr.domain.Rezervacija;
+import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 import org.junit.Test;
 import org.mockito.MockedStatic;
 
@@ -25,6 +27,17 @@ public class RezervacijaManagerTest {
         daoFactoryMockedStatic.close();
     }
 
-    public void testAdd() {
+    @Test
+    public void testAdd() throws DolinaSreceException {
+        Rezervacija rezervacija = new Rezervacija();
+        RezervacijaDao rezervacijaDao = mock(RezervacijaDao.class);
+        MockedStatic<DaoFactory> daoFactoryMockedStatic = mockStatic(DaoFactory.class);
+        daoFactoryMockedStatic.when(DaoFactory::rezervacijaDao).thenReturn(rezervacijaDao);
+
+        RezervacijaManager.add(rezervacija);
+
+        verify(rezervacijaDao).add(rezervacija);
+
+        daoFactoryMockedStatic.close();
     }
 }
