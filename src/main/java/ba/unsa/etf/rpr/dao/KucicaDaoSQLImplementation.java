@@ -2,15 +2,11 @@ package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Kucica;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
-import javafx.fxml.Initializable;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
-import java.util.ResourceBundle;
 import java.util.TreeMap;
 
 public class KucicaDaoSQLImplementation extends AbstractDao<Kucica> implements KucicaDao {
@@ -35,15 +31,12 @@ public class KucicaDaoSQLImplementation extends AbstractDao<Kucica> implements K
     @Override
     public Kucica row2object(ResultSet rs) throws DolinaSreceException {
         try {
-            int id = rs.getInt("id");
-            String ime = rs.getString("ime");
-            BigDecimal cijena = rs.getBigDecimal("cijena");
-            boolean jacuzzi = rs.getBoolean("jacuzzi");
-            byte[] slika = rs.getBlob("slika").getBinaryStream().readAllBytes();
-
-            Kucica kucica = new Kucica(ime, cijena, jacuzzi, slika);
-            kucica.setId(id);
-
+            Kucica kucica = new Kucica();
+            kucica.setId(rs.getInt("id"));
+            kucica.setIme(rs.getString("ime"));
+            kucica.setCijena(rs.getBigDecimal("cijena"));
+            kucica.setJacuzzi(rs.getBoolean("jacuzzi"));
+            kucica.setSlika(rs.getBlob("slika").getBinaryStream().readAllBytes());
             return kucica;
         } catch (SQLException e) {
             throw new DolinaSreceException(e.getMessage(), e);
