@@ -6,6 +6,11 @@ import java.sql.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Abstract class that implements core DAO CRUD methods for every entity
+ *
+ * @author Dijana Fermic
+ */
 public abstract class AbstractDao<T> implements Dao<T> {
     private static Connection connection = null;
     private final String tableName;
