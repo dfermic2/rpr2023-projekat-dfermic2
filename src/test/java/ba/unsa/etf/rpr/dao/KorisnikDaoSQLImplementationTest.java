@@ -15,12 +15,19 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class KorisnikDaoSQLImplementationTest {
-    @Test
-    public void testRow2object() throws SQLException, DolinaSreceException {
 
-        Korisnik korisnik = new Korisnik("Mujo", "Mujic", "mujo@mujo.com", "Mu Town 99", "mujo123");
+    private static Korisnik korisnik;
+    private static KorisnikDaoSQLImplementation korisnikDaoSQLImplementation;
+
+    @BeforeAll
+    public static void initialize() {
+        korisnik = new Korisnik("Mujo", "Mujic", "mujo@mujo.com", "Mu Town 99", "mujo123");
         korisnik.setId(1);
 
+        korisnikDaoSQLImplementation = (KorisnikDaoSQLImplementation) DaoFactory.korisnikDao();
+    }
+    @Test
+    public void testRow2object() throws SQLException, DolinaSreceException {
         ResultSet resultSet = mock(ResultSet.class);
         when(resultSet.getInt("id")).thenReturn(1);
         when(resultSet.getString("ime")).thenReturn("Mujo");
@@ -29,16 +36,11 @@ public class KorisnikDaoSQLImplementationTest {
         when(resultSet.getString("adresa")).thenReturn("Mu Town 99");
         when(resultSet.getString("password")).thenReturn("mujo123");
 
-        KorisnikDaoSQLImplementation korisnikDaoSQLImplementation = (KorisnikDaoSQLImplementation) DaoFactory.korisnikDao();
-
         assertEquals(korisnikDaoSQLImplementation.row2object(resultSet), korisnik);
     }
 
     @Test
     public void testObject2row() {
-        KorisnikDaoSQLImplementation korisnikDaoSQLImplementation = (KorisnikDaoSQLImplementation) DaoFactory.korisnikDao();
-        Korisnik korisnik = new Korisnik("Mujo", "Mujic", "mujo@mujo.com", "Mu Town 99", "mujo123");
-
         Map<String, Object> row = new TreeMap<>();
         row.put("id", korisnik.getId());
         row.put("ime", korisnik.getIme());
@@ -46,7 +48,6 @@ public class KorisnikDaoSQLImplementationTest {
         row.put("email", korisnik.getEmail());
         row.put("adresa", korisnik.getAdresa());
         row.put("password", korisnik.getPassword());
-        korisnik.setId(1);
 
         assertEquals(korisnikDaoSQLImplementation.object2row(korisnik), row);
 
