@@ -25,5 +25,11 @@ public interface Dao<T> {
      */
     List<T> getAll() throws DolinaSreceException;
 
+    /**
+     * add object to database
+     * @param item object to add to database
+     * @return Entity from database
+     * @throws DolinaSreceException - user defined exception
+     */
     T add(T item) throws DolinaSreceException;
 }
