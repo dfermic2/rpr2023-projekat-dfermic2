@@ -6,6 +6,11 @@ import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 
 import java.util.List;
 
+/**
+ * Business Logic for management of Kucica
+ *
+ * @author Dijana Fermic
+ */
 public class KucicaManager {
     public static Kucica findById(int id) throws DolinaSreceException {
         return DaoFactory.kucicaDao().getById(id);
