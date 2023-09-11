@@ -16,6 +16,11 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
 
+/**
+ * JavaFX controller for creation and alteration of Kucica object
+ *
+ * @author Dijana Fermic
+ */
 public class KucicaController {
 
     @FXML
