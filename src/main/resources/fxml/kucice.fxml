@@ -11,7 +11,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.KuciceController">
+<?import java.lang.String?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.KuciceController">
    <children>
       <fx:include source="navigacija.fxml" />
       <HBox alignment="CENTER_LEFT" prefHeight="83.0" prefWidth="1000.0">
@@ -34,6 +35,9 @@
                <font>
                   <Font size="18.0" />
                </font>
+               <styleClass>
+                  <String fx:value="btnGreen" />
+               </styleClass>
             </Button>
          </children>
          <padding>

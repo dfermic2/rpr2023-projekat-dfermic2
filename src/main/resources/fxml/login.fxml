@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import java.lang.String?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" stylesheets="@../style/style.css, @../style/login.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.LoginController">
     <center>
         <VBox alignment="CENTER" prefHeight="810.0" prefWidth="795.0" spacing="20.0" BorderPane.alignment="CENTER">
             <children>
@@ -58,7 +58,7 @@
                         <Font size="17.0" />
                     </font>
                     <styleClass>
-                        <String fx:value="btnLogin" />
+                        <String fx:value="btnGreen" />
                     </styleClass>
                 </Button>
                 <Label fx:id="loginMessage" prefHeight="40.0" prefWidth="375.0" textAlignment="CENTER" textFill="#902b2b">
