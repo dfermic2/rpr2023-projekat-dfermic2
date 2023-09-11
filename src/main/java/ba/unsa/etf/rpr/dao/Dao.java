@@ -4,6 +4,11 @@ import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 
 import java.util.List;
 
+/**
+ * Root interface for all DAO classes
+ *
+ * @author Dijana Fermic
+ */
 public interface Dao<T> {
     T getById(int id) throws DolinaSreceException;
 
