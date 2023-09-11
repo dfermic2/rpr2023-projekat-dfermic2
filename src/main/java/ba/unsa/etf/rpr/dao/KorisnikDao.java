@@ -9,5 +9,11 @@ import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
  * @author Dijana Fermic
  */
 public interface KorisnikDao extends Dao<Korisnik> {
+    /**
+     * get Korisnik entity from database with given email
+     * @param email String containing user email
+     * @return Korisnik entity from database
+     * @throws DolinaSreceException - user defined exception
+     */
     Korisnik getByEmail(String email) throws DolinaSreceException;
 }
