@@ -78,7 +78,7 @@ public class RezervacijaController implements Initializable {
                 @Override
                 public void updateItem(LocalDate date, boolean empty) {
                     super.updateItem(date, empty);
-                    if(pocetakDate.getValue() != null) setDisable(empty || date.isBefore(pocetakDate.getValue()));
+                    if(pocetakDate.getValue() != null) setDisable(empty || date.isBefore(pocetakDate.getValue().plusDays(1)));
                     else setDisable(empty || date.isBefore(LocalDate.now()));
                 }
             });
