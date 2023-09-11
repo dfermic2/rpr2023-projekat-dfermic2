@@ -2,7 +2,7 @@ package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Korisnik;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
 
 import java.sql.ResultSet;
@@ -16,16 +16,21 @@ import static org.mockito.Mockito.when;
 
 public class KorisnikDaoSQLImplementationTest {
 
+    private static final int ID = 1;
     private static Korisnik korisnik;
+    private static Korisnik korisnikNoId;
     private static KorisnikDaoSQLImplementation korisnikDaoSQLImplementation;
 
     @BeforeAll
     public static void initialize() {
         korisnik = new Korisnik("Mujo", "Mujic", "mujo@mujo.com", "Mu Town 99", "mujo123");
-        korisnik.setId(1);
+        korisnik.setId(ID);
+
+        korisnikNoId = new Korisnik("Mujo", "Mujic", "mujo@mujo.com", "Mu Town 99", "mujo123");
 
         korisnikDaoSQLImplementation = (KorisnikDaoSQLImplementation) DaoFactory.korisnikDao();
     }
+
     @Test
     public void testRow2object() throws SQLException, DolinaSreceException {
         ResultSet resultSet = mock(ResultSet.class);
@@ -53,6 +58,8 @@ public class KorisnikDaoSQLImplementationTest {
 
     }
 
+    @Test
     public void testPrepareItem() {
+        assertEquals(korisnikDaoSQLImplementation.prepareItem(korisnikNoId, ID).getId(), ID);
     }
 }
