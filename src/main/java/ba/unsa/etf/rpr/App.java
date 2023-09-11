@@ -5,6 +5,7 @@ import ba.unsa.etf.rpr.domain.Korisnik;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class App {
     public static void main(String[] args) {
@@ -52,6 +53,9 @@ public class App {
     }
 
     private static void registracija() {
+        String emailRegex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+                + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Registracija");
 
@@ -69,5 +73,26 @@ public class App {
 
         System.out.print("Unesite password: ");
         String password = scanner.nextLine();
+
+        try {
+            Korisnik korisnik = KorisnikManager.findByEmail(email);
+
+            if(ime.isEmpty() || prezime.isEmpty() || email.isEmpty() || adresa.isEmpty() || password.isEmpty()) {
+                System.out.println("Nepotpuni podatci!");
+                biranjeLoginRegistracija();
+            }
+            if(korisnik != null) {
+                System.out.println("Email adresa vec postoji!");
+                biranjeLoginRegistracija();
+            }
+            if (!Pattern.compile(emailRegex).matcher(email).matches()) {
+                System.out.println("Neispravan format email adrese");
+                biranjeLoginRegistracija();
+            }
+
+        } catch (DolinaSreceException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
