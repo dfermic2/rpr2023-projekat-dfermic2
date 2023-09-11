@@ -9,6 +9,11 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * MySQL implementation of KucicaDao
+ *
+ * @author Dijana Fermic
+ */
 public class KucicaDaoSQLImplementation extends AbstractDao<Kucica> implements KucicaDao {
 
     private static KucicaDaoSQLImplementation instance = null;
