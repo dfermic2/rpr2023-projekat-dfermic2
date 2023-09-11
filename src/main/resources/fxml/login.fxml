@@ -88,7 +88,7 @@
                                 <Font size="20.0" />
                             </font>
                         </Label>
-                        <TextField id="email" fx:id="ime" prefHeight="30.0" prefWidth="261.0" />
+                        <TextField id="email" fx:id="ime" prefHeight="30.0" prefWidth="261.0" promptText="Ime" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="40.0" prefWidth="715.0">
@@ -98,7 +98,7 @@
                                 <Font size="20.0" />
                             </font>
                         </Label>
-                        <TextField id="email" fx:id="prezime" prefHeight="30.0" prefWidth="260.0" />
+                        <TextField id="email" fx:id="prezime" prefHeight="30.0" prefWidth="260.0" promptText="Prezime" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="40.0" prefWidth="715.0">
@@ -108,7 +108,7 @@
                                 <Font size="20.0" />
                             </font>
                         </Label>
-                        <TextField id="email" fx:id="emailRegistracija" prefHeight="30.0" prefWidth="260.0" />
+                        <TextField id="email" fx:id="emailRegistracija" prefHeight="30.0" prefWidth="260.0" promptText="Email" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="40.0" prefWidth="715.0">
@@ -118,7 +118,7 @@
                                 <Font size="20.0" />
                             </font>
                         </Label>
-                        <TextField id="email" fx:id="adresa" prefHeight="30.0" prefWidth="260.0" />
+                        <TextField id="email" fx:id="adresa" prefHeight="30.0" prefWidth="260.0" promptText="Adresa" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="40.0" prefWidth="715.0">
@@ -128,7 +128,7 @@
                                 <Font size="20.0" />
                             </font>
                         </Label>
-                        <PasswordField id="password" fx:id="passwordRegistracija" onAction="#onLogin" prefHeight="30.0" prefWidth="264.0" />
+                        <PasswordField id="password" fx:id="passwordRegistracija" onAction="#onLogin" prefHeight="30.0" prefWidth="264.0" promptText="Password" />
                     </children>
                     <padding>
                         <Insets bottom="25.0" />
