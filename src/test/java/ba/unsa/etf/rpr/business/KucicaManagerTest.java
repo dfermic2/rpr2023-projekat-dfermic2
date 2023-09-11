@@ -23,6 +23,16 @@ public class KucicaManagerTest {
         daoFactoryMockedStatic.close();
     }
 
-    public void testGetAll() {
+    @Test
+    public void testGetAll() throws DolinaSreceException {
+        KucicaDao kucicaDao = mock(KucicaDao.class);
+        MockedStatic<DaoFactory> daoFactoryMockedStatic = mockStatic(DaoFactory.class);
+        daoFactoryMockedStatic.when(DaoFactory::kucicaDao).thenReturn(kucicaDao);
+
+        KucicaManager.getAll();
+
+        verify(kucicaDao).getAll();
+
+        daoFactoryMockedStatic.close();
     }
 }
