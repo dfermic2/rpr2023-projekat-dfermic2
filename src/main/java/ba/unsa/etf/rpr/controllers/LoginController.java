@@ -17,6 +17,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
+/**
+ * JavaFX controller for login and registration
+ *
+ * @author Dijana Fermic
+ */
 public class LoginController {
 
     @FXML
