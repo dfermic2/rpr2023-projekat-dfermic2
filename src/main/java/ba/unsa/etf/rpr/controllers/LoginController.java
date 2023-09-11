@@ -39,7 +39,7 @@ public class LoginController {
         Scene scene = new Scene(fxmlLoader.load());
 
         KuciceController kuciceController = fxmlLoader.getController();
-        kuciceController.setIdKorisnik(korisnik.getId());
+        kuciceController.saveIdKorisnik(korisnik.getId());
 
         stage.setScene(scene);
         stage.show();
@@ -65,7 +65,7 @@ public class LoginController {
             Scene scene = new Scene(fxmlLoader.load());
 
             KuciceController kuciceController = fxmlLoader.getController();
-            kuciceController.setIdKorisnik(korisnik.getId());
+            kuciceController.saveIdKorisnik(korisnik.getId());
 
             stage.setScene(scene);
             stage.show();

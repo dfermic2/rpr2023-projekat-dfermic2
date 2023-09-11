@@ -1,13 +1,18 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.domain.Kucica;
+import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 
 public class KucicaController {
 
@@ -32,8 +37,10 @@ public class KucicaController {
         this.kucica = kucica;
     }
 
-    public void onRezervisi(ActionEvent actionEvent) {
-        KuciceController kuciceController = new KuciceController();
+    public void onRezervisi() throws DolinaSreceException, IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucice.fxml"));
+        Parent root = fxmlLoader.load();
+        KuciceController kuciceController = fxmlLoader.getController();
         kuciceController.saveRezervacija(kucica);
     }
 }

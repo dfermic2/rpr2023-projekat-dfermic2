@@ -16,8 +16,10 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.temporal.Temporal;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -33,7 +35,10 @@ public class KuciceController implements Initializable {
 
     @FXML
     DatePicker pocetakDate, krajDate;
-    private int idKorisnik;
+    Rezervacija rezervacija = new Rezervacija();
+
+    static LocalDate pocetak;
+    static LocalDate kraj;
     private final List<Kucica> kucicaList;
 
     {
@@ -42,10 +47,6 @@ public class KuciceController implements Initializable {
         } catch (DolinaSreceException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public void setIdKorisnik(int idKorisnik) {
-        this.idKorisnik = idKorisnik;
     }
 
     @Override
@@ -78,6 +79,12 @@ public class KuciceController implements Initializable {
     }
 
     public void onTrazi() throws IOException {
+//        rezervacija.setPocetak(returnDate(pocetakDate.getValue()));
+//        rezervacija.setKraj(returnDate(krajDate.getValue()));
+//
+//        pocetak = pocetakDate.getValue();
+//        kraj = krajDate.getValue();
+
         Set<Integer> kuciceId = RezervacijaManager.findBetweenDates(returnDate(pocetakDate.getValue()));
         kuciceId.addAll(RezervacijaManager.findBetweenDates(returnDate(krajDate.getValue())));
 
@@ -87,8 +94,34 @@ public class KuciceController implements Initializable {
         showKucice(kuciceFiltered);
     }
 
-    public void saveRezervacija(Kucica kucica) {
-        Rezervacija rezervacija = new Rezervacija(0, idKorisnik, kucica.getId(), returnDate(pocetakDate.getValue()), returnDate(krajDate.getValue()), returnUkupnaCijena(kucica.getCijena()));
+    public void getPocetakDate() {
+        pocetak = pocetakDate.getValue();
+        System.out.println(pocetak.toString());
+    }
+
+    public void getKrajDate() {
+        kraj =  krajDate.getValue();
+    }
+
+    public void saveIdKorisnik(int idKorisnik) {
+        rezervacija.setIdKorisnik(idKorisnik);
+    }
+
+    public void saveRezervacija(Kucica kucica) throws DolinaSreceException {
+//        System.out.println("++++++++++");
+//        System.out.println(kucica.toString());
+//        System.out.println(pocetak);
+//        System.out.println(pocetakDate);
+//        System.out.println("++++++++++");
+
+
+        rezervacija.setPocetak(returnDate(pocetak));
+        rezervacija.setKraj(returnDate(kraj));
+        rezervacija.setIdKucica(kucica.getId());
+        rezervacija.setCijena(returnUkupnaCijena(kucica.getCijena()));
+
+//        System.out.println(rezervacija.toString());
+        RezervacijaManager.add(rezervacija);
     }
 
     private void showKucice(List<Kucica> kucicaList) throws IOException {
@@ -102,7 +135,8 @@ public class KuciceController implements Initializable {
     }
 
     private BigDecimal returnUkupnaCijena(BigDecimal cijena) {
-        return cijena.multiply(BigDecimal.valueOf(DAYS.between(pocetakDate.getValue(), krajDate.getValue())));
+//        return cijena.multiply(BigDecimal.valueOf(DAYS.between(pocetak, kraj)));
+        return cijena.multiply(BigDecimal.valueOf(Duration.between(pocetak.atStartOfDay(), kraj.atStartOfDay()).toDays()));
     }
 
     private Date returnDate(LocalDate date) {
