@@ -49,7 +49,15 @@ public class KuciceController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
 
-            showKucice(kucicaList);
+            for (Kucica kucica : kucicaList) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucica.fxml"));
+                VBox vBox = fxmlLoader.load();
+                KucicaController kucicaController = fxmlLoader.getController();
+                kucicaController.setData(kucica);
+                kucicaController.disableButton();
+                kuciceLayout.getChildren().add(vBox);
+            }
+
             // TODO: REFACTOR
             pocetakDate.setDayCellFactory(param -> new DateCell() {
                 @Override
@@ -81,7 +89,13 @@ public class KuciceController implements Initializable {
         List<Kucica> kuciceFiltered = kucicaList.stream().filter(kucica -> !kuciceId.contains(kucica.getId())).collect(Collectors.toList());
 
         kuciceLayout.getChildren().clear();
-        showKucice(kuciceFiltered);
+        for (Kucica kucica : kuciceFiltered) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucica.fxml"));
+            VBox vBox = fxmlLoader.load();
+            KucicaController kucicaController = fxmlLoader.getController();
+            kucicaController.setData(kucica);
+            kuciceLayout.getChildren().add(vBox);
+        }
     }
 
     public void getPocetakDate() {
@@ -104,16 +118,6 @@ public class KuciceController implements Initializable {
         rezervacija.setCijena(returnUkupnaCijena(kucica.getCijena()));
 
         RezervacijaManager.add(rezervacija);
-    }
-
-    private void showKucice(List<Kucica> kucicaList) throws IOException {
-        for (Kucica kucica : kucicaList) {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucica.fxml"));
-            VBox vBox = fxmlLoader.load();
-            KucicaController kucicaController = fxmlLoader.getController();
-            kucicaController.setData(kucica);
-            kuciceLayout.getChildren().add(vBox);
-        }
     }
 
     private BigDecimal returnUkupnaCijena(BigDecimal cijena) {

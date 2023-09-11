@@ -2,11 +2,10 @@ package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.domain.Kucica;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -22,6 +21,9 @@ public class KucicaController {
     @FXML
     private ImageView slika;
 
+    @FXML
+    private Button rezervisanje;
+
     Kucica kucica;
 
     public void setData(Kucica kucica) {
@@ -35,6 +37,10 @@ public class KucicaController {
         slika.setImage(image);
 
         this.kucica = kucica;
+    }
+
+    public void disableButton() {
+        rezervisanje.setDisable(true);
     }
 
     public void onRezervisi() throws DolinaSreceException, IOException {
