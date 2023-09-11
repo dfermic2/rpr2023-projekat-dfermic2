@@ -29,7 +29,7 @@ import static java.time.temporal.ChronoUnit.DAYS;
  *
  * @author Dijana Fermic
  */
-public class KuciceController implements Initializable {
+public class RezervacijaController implements Initializable {
 
     @FXML
     TilePane kuciceLayout;

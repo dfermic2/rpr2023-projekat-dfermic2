@@ -59,8 +59,8 @@ public class KucicaController {
         if (alert.showAndWait().get() == ButtonType.OK) {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/rezervacija.fxml"));
             Parent root = fxmlLoader.load();
-            KuciceController kuciceController = fxmlLoader.getController();
-            kuciceController.saveRezervacija(kucica);
+            RezervacijaController rezervacijaController = fxmlLoader.getController();
+            rezervacijaController.saveRezervacija(kucica);
         }
     }
 }

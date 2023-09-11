@@ -45,8 +45,8 @@ public class LoginController {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/rezervacija.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
 
-                KuciceController kuciceController = fxmlLoader.getController();
-                kuciceController.saveIdKorisnik(korisnik.getId());
+                RezervacijaController rezervacijaController = fxmlLoader.getController();
+                rezervacijaController.saveIdKorisnik(korisnik.getId());
 
                 stage.setScene(scene);
                 stage.show();
@@ -79,8 +79,8 @@ public class LoginController {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/rezervacija.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
 
-                KuciceController kuciceController = fxmlLoader.getController();
-                kuciceController.saveIdKorisnik(korisnik.getId());
+                RezervacijaController rezervacijaController = fxmlLoader.getController();
+                rezervacijaController.saveIdKorisnik(korisnik.getId());
 
                 stage.setScene(scene);
                 stage.show();
