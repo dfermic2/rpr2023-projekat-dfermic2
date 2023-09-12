@@ -66,6 +66,9 @@ public class RezervacijaController implements Initializable {
                 kuciceLayout.getChildren().add(vBox);
             }
 
+            pocetakDate.setShowWeekNumbers(false);
+            krajDate.setShowWeekNumbers(false);
+
             pocetakDate.setDayCellFactory(param -> new DateCell() {
                 @Override
                 public void updateItem(LocalDate date, boolean empty) {
