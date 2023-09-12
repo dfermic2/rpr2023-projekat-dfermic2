@@ -14,7 +14,7 @@ Pokrenite aplikaciju komandama:
 
 Logujte se sa svojim kredencijalima ili se registrujte ukoliko ih nemate
 <br>
-Pregledajte dostupne kućice, filtrirajte ih i pravite rezervacije.
+Pregledajte dostupne kućice, filtrirajte ih i pravite rezervacije
 
 
 ## Slike
