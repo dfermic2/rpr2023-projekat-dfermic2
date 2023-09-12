@@ -19,6 +19,11 @@ import java.util.stream.Collectors;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
+/**
+ * Logic for basic user interaction trough terminal
+ *
+ * @author Dijana Fermic
+ */
 public class App {
     public static void main(String[] args) {
         biranjeLoginRegistracija();
