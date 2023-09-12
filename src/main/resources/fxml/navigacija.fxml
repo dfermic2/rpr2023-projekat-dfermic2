@@ -19,7 +19,7 @@
                   <Image url="@../pictures/logo.png" />
                </image>
             </ImageView>
-            <Pane prefHeight="65.0" prefWidth="597.0" />
+            <Pane prefHeight="65.0" prefWidth="508.0" />
             <Button mnemonicParsing="false" onAction="#onPocetna" prefHeight="50.0" prefWidth="110.0" text="Pocetna">
                <font>
                   <Font size="20.0" />
@@ -43,6 +43,15 @@
                <styleClass>
                   <String fx:value="navBtn" />
                </styleClass>
+            </Button>
+            <Button fx:id="logoutBtn" mnemonicParsing="false" prefHeight="58.0" prefWidth="88.0">
+               <graphic>
+                  <ImageView>
+                     <image>
+                        <Image url="@../pictures/logout.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
          </children>
          <padding>
