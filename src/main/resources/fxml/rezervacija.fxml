@@ -30,7 +30,7 @@
                </font>
             </Label>
             <DatePicker fx:id="krajDate" editable="false" onAction="#getKrajDate" prefHeight="45.0" prefWidth="265.0" promptText="Izaberite kraj" />
-            <Pane prefHeight="83.0" prefWidth="270.0" />
+            <Label fx:id="validacija" alignment="CENTER" prefHeight="45.0" prefWidth="286.0" textFill="#902b2b" />
             <Button fx:id="traziBtn" mnemonicParsing="false" onAction="#onTrazi" prefHeight="45.0" prefWidth="197.0" text="Traži">
                <font>
                   <Font size="18.0" />

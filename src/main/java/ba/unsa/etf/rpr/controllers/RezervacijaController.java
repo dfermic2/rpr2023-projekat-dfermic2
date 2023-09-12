@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -45,6 +46,9 @@ public class RezervacijaController implements Initializable {
 
     @FXML
     Button traziBtn;
+
+    @FXML
+    Label validacija;
 
     private static LocalDate pocetak;
     private static LocalDate kraj;
@@ -101,17 +105,26 @@ public class RezervacijaController implements Initializable {
     }
 
     public void onTrazi() throws IOException {
-        Set<Integer> kuciceId = RezervacijaManager.findBetweenDates(pocetakDate.getValue());
-        kuciceId.addAll(RezervacijaManager.findBetweenDates(krajDate.getValue()));
-        List<Kucica> kuciceFiltered = kucicaList.stream().filter(kucica -> !kuciceId.contains(kucica.getId())).collect(Collectors.toList());
-        kuciceLayout.getChildren().clear();
+        if(pocetak == null) {
+            validacija.setText("Postavite početni datum!");
+        } else if (kraj == null) {
+            validacija.setText("Postavite krajnji datum!");
+        } else if (pocetak.isAfter(kraj)) {
+            validacija.setText("Početni datum ne može biti prije krajnjeg!");
+        } else {
+            validacija.setText("");
+            Set<Integer> kuciceId = RezervacijaManager.findBetweenDates(pocetak);
+            kuciceId.addAll(RezervacijaManager.findBetweenDates(kraj));
+            List<Kucica> kuciceFiltered = kucicaList.stream().filter(kucica -> !kuciceId.contains(kucica.getId())).collect(Collectors.toList());
+            kuciceLayout.getChildren().clear();
 
-        for (Kucica kucica : kuciceFiltered) {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucica.fxml"));
-            VBox vBox = fxmlLoader.load();
-            KucicaController kucicaController = fxmlLoader.getController();
-            kucicaController.setData(kucica, returnUkupnaCijena(kucica.getCijena()));
-            kuciceLayout.getChildren().add(vBox);
+            for (Kucica kucica : kuciceFiltered) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucica.fxml"));
+                VBox vBox = fxmlLoader.load();
+                KucicaController kucicaController = fxmlLoader.getController();
+                kucicaController.setData(kucica, returnUkupnaCijena(kucica.getCijena()));
+                kuciceLayout.getChildren().add(vBox);
+            }
         }
     }
 
