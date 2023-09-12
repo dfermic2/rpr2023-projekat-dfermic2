@@ -21,13 +21,13 @@ Pregledajte dostupne kućice, filtrirajte ih i pravite rezervacije
 
 ![login](https://github.com/dfermic2/rpr2023-projekat-dfermic2/assets/44432006/a17ebfa5-0b6a-4b27-8599-c4400e29b69c)
 
-Pri pokretanju aplikacije korisniku se prikazuje prozor u kojem može uraditi prijava ili registraciju.
+Pri pokretanju aplikacije, korisniku se prikazuje prozor u kojem može uraditi prijavu ili registraciju.
 
 <br>
 
 ![datumi](https://github.com/dfermic2/rpr2023-projekat-dfermic2/assets/44432006/3af05aea-84d3-41cf-a179-43810fe1d721)
 
-Kada je logovan, korisnik dolazi na stranicu u kojoj ima prikaz svih kućica i mogućnost filtriranja istih po datumu koji želi rezervisati.
+Kada je prijavljen, korisnik dolazi na stranicu u kojoj se nalazi prikaz svih kućica i mogućnost filtriranja istih.
 
 <br>
 
@@ -46,7 +46,7 @@ Klikom na dugme Rezerviši, kreira se rezervacija u bazi što se korisniku javlj
 
 ![oNama](https://github.com/dfermic2/rpr2023-projekat-dfermic2/assets/44432006/9fe36801-f3b7-42ed-9646-2c394c74a4a0)
 
-Pored početne stranice korisnik kroz navigaciju može otvoriti i stranice O nama i Kontakt. Stranica O nama sadrži više informacija o Dolini Sreće.
+Pored početne stranice, korisnik kroz navigaciju može otvoriti i stranice O nama i Kontakt. Stranica O nama sadrži više informacija o Dolini Sreć.
 
 <br>
 
