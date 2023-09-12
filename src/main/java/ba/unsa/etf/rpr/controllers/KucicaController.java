@@ -4,6 +4,8 @@ import ba.unsa.etf.rpr.domain.Kucica;
 import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -14,13 +16,15 @@ import javafx.scene.image.ImageView;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * JavaFX controller for creation and alteration of Kucica object
  *
  * @author Dijana Fermic
  */
-public class KucicaController {
+public class KucicaController implements Initializable {
 
     @FXML
     private Label ime, jacuzzi, cijena;
@@ -32,6 +36,11 @@ public class KucicaController {
     private Button rezervisanje;
 
     Kucica kucica;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        rezervisanje.setCursor(Cursor.HAND);
+    }
 
     public void setData(Kucica kucica, BigDecimal cijenaPrikaz) {
         ime.setText(kucica.getIme());
