@@ -94,7 +94,8 @@ public class RezervacijaController implements Initializable {
                 @Override
                 public void updateItem(LocalDate date, boolean empty) {
                     super.updateItem(date, empty);
-                    if(pocetakDate.getValue() != null) setDisable(empty || date.isBefore(pocetakDate.getValue().plusDays(1)));
+                    if (pocetakDate.getValue() != null)
+                        setDisable(empty || date.isBefore(pocetakDate.getValue().plusDays(1)));
                     else setDisable(empty || date.isBefore(LocalDate.now()));
                 }
             });
@@ -105,7 +106,7 @@ public class RezervacijaController implements Initializable {
     }
 
     public void onTrazi() throws IOException {
-        if(pocetak == null) {
+        if (pocetak == null) {
             validacija.setText("Postavite početni datum!");
         } else if (kraj == null) {
             validacija.setText("Postavite krajnji datum!");
