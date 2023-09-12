@@ -9,8 +9,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.layout.TilePane;
@@ -41,6 +43,9 @@ public class RezervacijaController implements Initializable {
     @FXML
     DatePicker pocetakDate, krajDate;
 
+    @FXML
+    Button traziBtn;
+
     private static LocalDate pocetak;
     private static LocalDate kraj;
     private static final Rezervacija rezervacija = new Rezervacija();
@@ -56,6 +61,10 @@ public class RezervacijaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        traziBtn.setCursor(Cursor.HAND);
+        pocetakDate.setCursor(Cursor.HAND);
+        krajDate.setCursor(Cursor.HAND);
+
         try {
             for (Kucica kucica : kucicaList) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/kucica.fxml"));
