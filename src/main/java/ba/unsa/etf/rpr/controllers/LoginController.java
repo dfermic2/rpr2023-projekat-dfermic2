@@ -6,15 +6,16 @@ import ba.unsa.etf.rpr.exceptions.DolinaSreceException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
 /**
@@ -22,13 +23,22 @@ import java.util.regex.Pattern;
  *
  * @author Dijana Fermic
  */
-public class LoginController {
+public class LoginController implements Initializable {
 
     @FXML
     public TextField email, password, ime, prezime, adresa, emailRegistracija, passwordRegistracija;
 
     @FXML
     public Label loginMessage, registracijaMessage;
+
+    @FXML
+    Button loginBtn, registerBtn;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loginBtn.setCursor(Cursor.HAND);
+        registerBtn.setCursor(Cursor.HAND);
+    }
 
     public void onLogin(ActionEvent actionEvent) throws DolinaSreceException, IOException {
         Korisnik korisnik;
